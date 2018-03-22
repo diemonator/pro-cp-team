@@ -1,1 +1,17 @@
 C:\Users\Lubomir\Documents\populat.io\populat.io\populat.io\bin\Debug\populat.io.exe.config
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\populat.io.exe.config
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\populat.io.exe
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\populat.io.pdb
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\MainWindow.g.cs
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\App.g.cs
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.cache
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.lref
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\MainWindow.baml
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.g.resources
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.Properties.Resources.resources
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.csproj.GenerateResource.Cache
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.exe
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
