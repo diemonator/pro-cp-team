@@ -3,10 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:populat.io"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="807.057" Width="1021.546">
+    <Grid Margin="0,0,0.2,-0.2">
+        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="10,10,621,550.8">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Male" Values="1" DataLabels="True"
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Female" Values="2" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+            <lvc:PieChart.DataTooltip>
+                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+            </lvc:PieChart.DataTooltip>
+        </lvc:PieChart>
+        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Margin="10,276,621,286.8">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="0-17" Values="3" DataLabels="True"
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="18-34" Values="4" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="35-54" Values="5" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="55+" Values="6" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+            <lvc:PieChart.DataTooltip>
+                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+            </lvc:PieChart.DataTooltip>
+        </lvc:PieChart>
+        <lvc:PieChart x:Name="ChartUrbanization" LegendLocation="Right" Hoverable="True" Margin="10,543,554,9.8">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Highly urbanized" Values="11" DataLabels="True"
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Strongly urbanized" Values="10" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Moderate" Values="9" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Lowly urbanized" Values="8" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Rural" Values="7" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+            <lvc:PieChart.DataTooltip>
+                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+            </lvc:PieChart.DataTooltip>
+        </lvc:PieChart>
     </Grid>
 </Window>

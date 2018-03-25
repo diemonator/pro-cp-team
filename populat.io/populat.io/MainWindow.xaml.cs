@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace populat.io
 {
@@ -23,6 +25,25 @@ namespace populat.io
         public MainWindow()
         {
             InitializeComponent();
+
+            ChartGender.Series[0].Values = new ChartValues<double> { 50000 };
+            ChartGender.Series[1].Values = new ChartValues<double> { 55000 };
+
+            ChartAges.Series[0].Values = new ChartValues<double> { 20000 };
+            ChartAges.Series[1].Values = new ChartValues<double> { 40000 };
+            ChartAges.Series[2].Values = new ChartValues<double> { 30000 };
+            ChartAges.Series[3].Values = new ChartValues<double> { 15000 };
+
+            ChartUrbanization.Series[0].Values = new ChartValues<double> { 20000 };
+            ChartUrbanization.Series[1].Values = new ChartValues<double> { 40000 };
+            ChartUrbanization.Series[2].Values = new ChartValues<double> { 30000 };
+            ChartUrbanization.Series[3].Values = new ChartValues<double> { 10000 };
+            ChartUrbanization.Series[4].Values = new ChartValues<double> { 5000 };
+
+            PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
+            DataContext = this;
         }
+
+        public Func<ChartPoint, string> PointLabel { get; set; }
     }
 }
