@@ -41,9 +41,15 @@ namespace populat.io
             ChartUrbanization.Series[4].Values = new ChartValues<double> { 5000 };
 
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
+
+            Labels = new string[] { "2017", "2018", "2019", "2020", "2021" };
+            ChartPopulationCount.Series[0].Values = new ChartValues<double> { 120000, 110000, 115000, 130000, 135000 };
+            
             DataContext = this;
+
         }
 
         public Func<ChartPoint, string> PointLabel { get; set; }
+        public string[] Labels { get; set; }
     }
 }
