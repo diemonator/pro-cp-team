@@ -72,5 +72,7 @@
                 <lvc:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
+        <Button x:Name="SaveCity" Content="Save City" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click"/>
     </Grid>
 </Window>

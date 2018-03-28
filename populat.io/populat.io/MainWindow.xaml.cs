@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using Microsoft.Win32;
 
 namespace populat.io
 {
@@ -44,7 +45,7 @@ namespace populat.io
 
             Labels = new string[] { "2017", "2018", "2019", "2020", "2021" };
             ChartPopulationCount.Series[0].Values = new ChartValues<double> { 120000, 110000, 115000, 130000, 135000 };
-            
+
             // sample data
             SeriesCollection = new SeriesCollection
             {
@@ -54,21 +55,52 @@ namespace populat.io
                     Values = new ChartValues<double> { 10, 50, 39, 50 }
                 }
             };
-            
+
             SeriesCollection.Add(new ColumnSeries
             {
                 Title = "2016",
                 Values = new ChartValues<double> { 11, 56, 42 }
             });
-            
+
             SeriesCollection[1].Values.Add(48d);
 
             DataContext = this;
+
 
         }
 
         public SeriesCollection SeriesCollection { get; set; }
         public Func<ChartPoint, string> PointLabel { get; set; }
         public string[] Labels { get; set; }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog()
+            {
+                Filter = "CSVFiles (.csv)|.csv",
+                AddExtension = true
+            };
+            if (dlg.ShowDialog() == true)
+            {
+                CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
+                flupke.WriteFile();
+            }
+            else
+            {
+                MessageBox.Show("You have canceled");
+            }
+
+        }
+
+        private void LoadCity_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() == true)
+            {
+                CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
+                flupke.ReadFile();
+                ChartGender.Series[0].Values = ChartGender.Series[0].Values = new ChartValues<double> { 50000 };
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using CsvHelper;
 
 namespace populat.io
 {
@@ -23,68 +24,35 @@ namespace populat.io
         {
             FileName = null;
         }
-        
+
         public CSVHelper(string fileName, string safeFileName)
         {
             FileName = fileName;
             SafeFileName = safeFileName;
         }
 
-        public City LoadFromFile()
+        public void WriteFile()
         {
-            City temp = null;
-            FileStream fs = null;
-            StreamReader sr = null;
-            List<Population> populations = new List<Population>();
-            try
-            {
-                fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
-                sr = new StreamReader(fs);
-                while (!sr.EndOfStream)
-                {
-                    populations.Add(PopulationFromString(sr.ReadLine()));
-                }
-                temp = new City(SafeFileName,populations);
+            var records = new List<Population>();
+            records.Add(new Population(2015, 0.00878, 0.0109, 0.138, 0, 821.752, 37.5, 0.494, 0.506, 0.0064, 0.1786, 0.3065, 0.2862, 0.2287));
+            using (TextWriter textWriter = File.CreateText(FileName)) {
+                var csv = new CsvWriter(textWriter);
+                csv.WriteRecords(records);
             }
-            catch (IOException e)
-            {
-                throw e;
-            }
-            finally
-            {
-                if (sr != null)
-                    sr.Close();
-            }
-            return temp;
         }
 
-        private Population PopulationFromString(string line)
+        public City ReadFile()
         {
-            Population temp = null;
-            try
+            using (TextReader fileReader = File.OpenText(FileName))
             {
-                string[] words = line.Split(',');
-                int year = Convert.ToInt32(words[0]);
-                decimal deathRate = Convert.ToDecimal(words[1]);
-                decimal birthRate = Convert.ToDecimal(words[2]);
-                decimal immigrationRate = Convert.ToDecimal(words[3]);
-                decimal emigrationRate = Convert.ToDecimal(words[4]);
-                decimal populationNumber = Convert.ToDecimal(words[5]);
-                double avrageAge = Convert.ToDouble(words[6]);
-                decimal maleRate = Convert.ToDecimal(words[7]);
-                decimal femaleRate = Convert.ToDecimal(words[8]);
-                decimal growthRate = Convert.ToDecimal(words[9]);
-                decimal age0_17 = Convert.ToDecimal(words[10]);
-                decimal age18_34 = Convert.ToDecimal(words[11]);
-                decimal age35_54 = Convert.ToDecimal(words[12]);
-                decimal age55_up = Convert.ToDecimal(words[13]);
-                temp = new Population(year, deathRate, birthRate, immigrationRate, emigrationRate, populationNumber, avrageAge, maleRate, femaleRate, growthRate, age0_17,age18_34,age35_54,age55_up);
-                return temp;
+                var csv = new CsvReader(fileReader);
+                var records = csv.EnumerateRecords(new Population());
+                List<Population> temp = new List<Population>((IEnumerable<Population>)records);
+                City amsterdam = new City(SafeFileName, temp);
+                return amsterdam;
             }
-            catch (FormatException e)
-            {
-                throw e;
-            }
+           
         }
+
     }
 }

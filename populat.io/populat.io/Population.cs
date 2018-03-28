@@ -9,22 +9,22 @@ namespace populat.io
     class Population
     {
         public int Year { get; set; }
-        public decimal DeathRate { get; set; }
-        public decimal BirthRate { get; set; }
-        public decimal ImmigrationRate { get; set; }
-        public decimal EmigrationRate { get; set; }
-        public decimal PopulationNr { get; set; }
-        public double AvrageAge { get; set; }
-        public decimal MaleRate { get; set; }
-        public decimal FemaleRate { get; set; }
-        public decimal GrowthRate { get; set; }
-        public decimal Age0_17 { get; set; }
-        public decimal Age18_34 { get; set; }
-        public decimal Age35_54 { get; set; }
-        public decimal Age55_up { get; set; }
+        public double DeathRate { get; set; }
+        public double BirthRate { get; set; }
+        public double ImmigrationRate { get; set; }
+        public double EmigrationRate { get; set; }
+        public double PopulationNr { get; set; }
+        public double AverageAge { get; set; }
+        public double MaleRate { get; set; }
+        public double FemaleRate { get; set; }
+        public double GrowthRate { get; set; }
+        public double Age0_17 { get; set; }
+        public double Age18_34 { get; set; }
+        public double Age35_54 { get; set; }
+        public double Age55_up { get; set; }
 
 
-        public Population(int year, decimal deathRate, decimal birthRate, decimal immigrationRate, decimal emigrationRate, decimal populationNr, double avrageAge, decimal maleRate, decimal femaleRate, decimal growthRate, decimal kids, decimal adults, decimal older, decimal elderly)
+        public Population(int year, double deathRate, double birthRate, double immigrationRate, double emigrationRate, double populationNr, double averageAge, double maleRate, double femaleRate, double growthRate, double kids, double adults, double older, double elderly)
         {
             Year = year;
             DeathRate = deathRate;
@@ -32,7 +32,7 @@ namespace populat.io
             ImmigrationRate = immigrationRate;
             EmigrationRate = emigrationRate;
             PopulationNr = populationNr;
-            AvrageAge = avrageAge;
+            AverageAge = averageAge;
             MaleRate = maleRate;
             FemaleRate = femaleRate;
             GrowthRate = growthRate;
@@ -40,6 +40,11 @@ namespace populat.io
             Age18_34 = adults;
             Age35_54 = older;
             Age55_up = elderly;
+        }
+
+        public Population()
+        {
+
         }
     }
 }
