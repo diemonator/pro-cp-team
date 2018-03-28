@@ -37,16 +37,16 @@
         </lvc:PieChart>
         <lvc:PieChart x:Name="ChartUrbanization" LegendLocation="Right" Hoverable="True" Margin="638,286,-5,0" Height="135" VerticalAlignment="Top">
             <lvc:PieChart.Series>
-                <lvc:PieSeries Title="Highly urbanized" Values="11" DataLabels="True"
+                <lvc:PieSeries Title="Death Rate" Values="11" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Strongly urbanized" Values="10" DataLabels="True" 
+                <lvc:PieSeries Title="Birth Rate" Values="10" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Moderate" Values="9" DataLabels="True" 
+                <!--<lvc:PieSeries Title="Moderate" Values="9" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
                 <lvc:PieSeries Title="Lowly urbanized" Values="8" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
                 <lvc:PieSeries Title="Rural" Values="7" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
+                    LabelPoint="{Binding PointLabel}"/>-->
             </lvc:PieChart.Series>
             <lvc:PieChart.DataTooltip>
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />

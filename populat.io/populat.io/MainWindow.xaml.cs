@@ -23,10 +23,11 @@ namespace populat.io
     /// </summary>
     public partial class MainWindow : Window
     {
+        private City city;
         public MainWindow()
         {
             InitializeComponent();
-
+            city = null;
             ChartGender.Series[0].Values = new ChartValues<double> { 50000 };
             ChartGender.Series[1].Values = new ChartValues<double> { 55000 };
 
@@ -37,9 +38,9 @@ namespace populat.io
 
             ChartUrbanization.Series[0].Values = new ChartValues<double> { 20000 };
             ChartUrbanization.Series[1].Values = new ChartValues<double> { 40000 };
-            ChartUrbanization.Series[2].Values = new ChartValues<double> { 30000 };
-            ChartUrbanization.Series[3].Values = new ChartValues<double> { 10000 };
-            ChartUrbanization.Series[4].Values = new ChartValues<double> { 5000 };
+            //ChartUrbanization.Series[2].Values = new ChartValues<double> { 30000 };
+            //ChartUrbanization.Series[3].Values = new ChartValues<double> { 10000 };
+            //ChartUrbanization.Series[4].Values = new ChartValues<double> { 5000 };
 
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
 
@@ -98,8 +99,24 @@ namespace populat.io
             if (dlg.ShowDialog() == true)
             {
                 CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
-                flupke.ReadFile();
-                ChartGender.Series[0].Values = ChartGender.Series[0].Values = new ChartValues<double> { 50000 };
+                city = flupke.ReadFile();
+                SettCharts();
+            }
+        }
+
+        private void SettCharts()
+        {
+            foreach (Population p in city.PopulationThroughYears)
+            {
+                ChartGender.Series[0].Values = ChartGender.Series[0].Values = new ChartValues<double> { p.MaleRate };
+                ChartGender.Series[1].Values = ChartGender.Series[1].Values = new ChartValues<double> { p.FemaleRate };
+                ChartAges.Series[0].Values = new ChartValues<double> { p.Age0_17 };
+                ChartAges.Series[1].Values = new ChartValues<double> { p.Age18_34 };
+                ChartAges.Series[2].Values = new ChartValues<double> { p.Age35_54 };
+                ChartAges.Series[3].Values = new ChartValues<double> { p.Age55_up };
+
+                ChartUrbanization.Series[0].Values = new ChartValues<double> { p.DeathRate };
+                ChartUrbanization.Series[1].Values = new ChartValues<double> { p.BirthRate };
             }
         }
     }
