@@ -31,10 +31,9 @@ namespace populat.io
             SafeFileName = safeFileName;
         }
 
-        public void WriteFile()
+        public void WriteFile(City city)
         {
-            var records = new List<Population>();
-            records.Add(new Population(2015, 0.00878, 0.0109, 0.138, 0, 821.752, 37.5, 0.494, 0.506, 0.0064, 0.1786, 0.3065, 0.2862, 0.2287));
+            var records = city.PopulationThroughYears;
             using (TextWriter textWriter = File.CreateText(FileName)) {
                 var csv = new CsvWriter(textWriter);
                 csv.WriteRecords(records);

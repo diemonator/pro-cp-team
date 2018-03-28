@@ -74,17 +74,18 @@ namespace populat.io
         public Func<ChartPoint, string> PointLabel { get; set; }
         public string[] Labels { get; set; }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void SaveCity_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog()
             {
-                Filter = "CSVFiles (.csv)|.csv",
-                AddExtension = true
+                Filter = "CSV|.csv",
+                AddExtension = true,
+                FileName = city.Name
             };
             if (dlg.ShowDialog() == true)
             {
                 CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
-                flupke.WriteFile();
+                flupke.WriteFile(city);
             }
             else
             {
@@ -95,7 +96,10 @@ namespace populat.io
 
         private void LoadCity_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog()
+            {
+                Filter = "CSV File (*.csv)|*.csv"
+            };
             if (dlg.ShowDialog() == true)
             {
                 CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
