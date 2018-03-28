@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="718.257" Width="1021.546">
     <Grid Margin="0,0,0.2,-0.2">
-        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="554,10,77,457" Height="215">
+        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="606,10,76.8,462.2" Height="215">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="Male" Values="1" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
@@ -19,7 +19,7 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Height="215" Margin="554,232,77,229">
+        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Height="215" Margin="606,238,76.8,234.2">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="0-17" Values="3" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
@@ -34,7 +34,7 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <lvc:PieChart x:Name="ChartUrbanization" LegendLocation="Right" Hoverable="True" Margin="554,465,10,0" Height="215" VerticalAlignment="Top">
+        <lvc:PieChart x:Name="ChartUrbanization" LegendLocation="Right" Hoverable="True" Margin="624,458,9.8,0" Height="222" VerticalAlignment="Top">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="Highly urbanized" Values="11" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
@@ -51,6 +51,17 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <m:Map CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,0,466,0"/>
+        <m:Map CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,0,505.8,235.2" Height="452" VerticalAlignment="Bottom"/>
+        <lvc:CartesianChart Name="ChartPopulationCount" LegendLocation="Right" Margin="0,457,505.8,0.2">
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Count" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Year" Labels="{Binding Labels}" ></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.Series>
+                <lvc:LineSeries Title="Population Count" Values="5" DataLabels="True"/>
+            </lvc:CartesianChart.Series>
+        </lvc:CartesianChart>
     </Grid>
 </Window>
