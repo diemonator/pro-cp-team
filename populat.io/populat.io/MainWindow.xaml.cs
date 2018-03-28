@@ -45,10 +45,29 @@ namespace populat.io
             Labels = new string[] { "2017", "2018", "2019", "2020", "2021" };
             ChartPopulationCount.Series[0].Values = new ChartValues<double> { 120000, 110000, 115000, 130000, 135000 };
             
+            // sample data
+            SeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "2015",
+                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                }
+            };
+            
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = "2016",
+                Values = new ChartValues<double> { 11, 56, 42 }
+            });
+            
+            SeriesCollection[1].Values.Add(48d);
+
             DataContext = this;
 
         }
 
+        public SeriesCollection SeriesCollection { get; set; }
         public Func<ChartPoint, string> PointLabel { get; set; }
         public string[] Labels { get; set; }
     }

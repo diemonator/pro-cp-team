@@ -23,7 +23,6 @@ C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
 C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\populat.io.exe.config
 C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.exe
 C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
-C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\App.g.cs
 C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.cache
 C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\MainWindow.baml
@@ -63,3 +62,4 @@ C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\p
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io.csproj.CopyComplete
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io.exe
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.lref
