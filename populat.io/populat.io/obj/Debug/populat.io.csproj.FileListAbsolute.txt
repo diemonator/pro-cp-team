@@ -115,3 +115,6 @@ C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.lref
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
+C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
+C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.csprojResolveAssemblyReference.cache
