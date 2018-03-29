@@ -4,9 +4,69 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:populat.io"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="700.228" Width="1145.582">
+    <Grid Margin="0,0,0.2,0" Height="667" VerticalAlignment="Top">
+        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="636,10,47,0" Height="133" VerticalAlignment="Top" MaxWidth="500">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Male" Values="1" DataLabels="True"
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Female" Values="2" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+            <lvc:PieChart.DataTooltip>
+                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+            </lvc:PieChart.DataTooltip>
+        </lvc:PieChart>
+        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Margin="636,148,47,0" Height="133" VerticalAlignment="Top" MaxWidth="500">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="0-17" Values="3" DataLabels="True"
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="18-34" Values="4" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="35-54" Values="5" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="55+" Values="6" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+            <lvc:PieChart.DataTooltip>
+                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+            </lvc:PieChart.DataTooltip>
+        </lvc:PieChart>
+        <lvc:PieChart x:Name="ChartBirthDeath" LegendLocation="Right" Hoverable="True" Margin="650,280,33,0" Height="135" VerticalAlignment="Top" MaxWidth="500">
+            <lvc:PieChart.Series>
+                <lvc:PieSeries Title="Death Rate" Values="11" DataLabels="True"
+                    LabelPoint="{Binding PointLabel}"/>
+                <lvc:PieSeries Title="Birth Rate" Values="10" DataLabels="True" 
+                    LabelPoint="{Binding PointLabel}"/>
+            </lvc:PieChart.Series>
+            <lvc:PieChart.DataTooltip>
+                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+            </lvc:PieChart.DataTooltip>
+        </lvc:PieChart>
+        <m:Map CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,0,506,0" Height="415" VerticalAlignment="Top" MaxWidth="800"/>
+        <lvc:CartesianChart Name="ChartPopulationCount" LegendLocation="Right" Margin="0,430,557,0" Height="224" VerticalAlignment="Top" MaxWidth="500">
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Count" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Year" Labels="{Binding Labels}" ></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.Series>
+                <lvc:LineSeries Title="Population Count" Values="5" DataLabels="True"/>
+            </lvc:CartesianChart.Series>
+        </lvc:CartesianChart>
+        <lvc:CartesianChart x:Name="ChartComparison" Series="{Binding SeriesCollection}" LegendLocation="Left" Margin="587,426,3,0" Height="228" VerticalAlignment="Top" MaxWidth="600" RenderTransformOrigin="0.5,0.5">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Years" Labels="{Binding LabelsColumns}"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Count" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+        <Button x:Name="SaveCity" Content="Save City" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="SaveCity_Click"/>
+        <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click"/>
     </Grid>
 </Window>
