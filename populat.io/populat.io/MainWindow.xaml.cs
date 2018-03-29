@@ -28,24 +28,13 @@ namespace populat.io
         {
             InitializeComponent();
             city = null;
-            ChartGender.Series[0].Values = new ChartValues<double> { 50000 };
-            ChartGender.Series[1].Values = new ChartValues<double> { 55000 };
-
-            ChartAges.Series[0].Values = new ChartValues<double> { 20000 };
-            ChartAges.Series[1].Values = new ChartValues<double> { 40000 };
-            ChartAges.Series[2].Values = new ChartValues<double> { 30000 };
-            ChartAges.Series[3].Values = new ChartValues<double> { 15000 };
-
-            ChartUrbanization.Series[0].Values = new ChartValues<double> { 20000 };
-            ChartUrbanization.Series[1].Values = new ChartValues<double> { 40000 };
-            //ChartUrbanization.Series[2].Values = new ChartValues<double> { 30000 };
-            //ChartUrbanization.Series[3].Values = new ChartValues<double> { 10000 };
-            //ChartUrbanization.Series[4].Values = new ChartValues<double> { 5000 };
 
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
 
-            Labels = new string[] { "2017", "2018", "2019", "2020", "2021" };
+            Labels = new List<string> { "2017", "2018", "2019", "2020", "2021" };
             ChartPopulationCount.Series[0].Values = new ChartValues<double> { 120000, 110000, 115000, 130000, 135000 };
+
+            LabelsColumns = new List<string> { "Birth", "Death", "Emigration", "Immigration" };
 
             // sample data
             SeriesCollection = new SeriesCollection
@@ -66,13 +55,12 @@ namespace populat.io
             SeriesCollection[1].Values.Add(48d);
 
             DataContext = this;
-
-
         }
 
         public SeriesCollection SeriesCollection { get; set; }
         public Func<ChartPoint, string> PointLabel { get; set; }
-        public string[] Labels { get; set; }
+        public List<string> Labels { get; set; }
+        public List<string> LabelsColumns { get; set; }
 
         private void SaveCity_Click(object sender, RoutedEventArgs e)
         {
@@ -91,7 +79,6 @@ namespace populat.io
             {
                 MessageBox.Show("You have canceled");
             }
-
         }
 
         private void LoadCity_Click(object sender, RoutedEventArgs e)
@@ -104,23 +91,55 @@ namespace populat.io
             {
                 CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
                 city = flupke.ReadFile();
-                SettCharts();
+                SetCharts();
             }
         }
 
-        private void SettCharts()
+        private void SetCharts()
         {
+            Labels.Clear();
+            ChartPopulationCount.Series[0].Values = new ChartValues<double>();
+            ChartGender.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().MaleRate };
+            ChartGender.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().FemaleRate };
+            ChartAges.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age0_17 };
+            ChartAges.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age18_34 };
+            ChartAges.Series[2].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age35_54 };
+            ChartAges.Series[3].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age55_up };
+            ChartBirthDeath.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().DeathRate };
+            ChartBirthDeath.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().BirthRate };
+            SeriesCollection.Clear();
+            SeriesCollection.Add
+            (
+                new ColumnSeries
+                {
+                    Title = city.PopulationThroughYears.First().Year.ToString(),
+                    Values = new ChartValues<double>
+                    {
+                        city.PopulationThroughYears.First().BirthRate,
+                        city.PopulationThroughYears.First().DeathRate,
+                        city.PopulationThroughYears.First().EmigrationRate,
+                        city.PopulationThroughYears.First().ImmigrationRate
+                    }
+                }
+            );
+            SeriesCollection.Add
+            (
+                new ColumnSeries
+                {
+                    Title = city.PopulationThroughYears.Last().Year.ToString(),
+                    Values = new ChartValues<double>
+                    {
+                        city.PopulationThroughYears.Last().BirthRate,
+                        city.PopulationThroughYears.Last().DeathRate,
+                        city.PopulationThroughYears.Last().EmigrationRate,
+                        city.PopulationThroughYears.Last().ImmigrationRate
+                    }
+                }
+            );
             foreach (Population p in city.PopulationThroughYears)
             {
-                ChartGender.Series[0].Values = ChartGender.Series[0].Values = new ChartValues<double> { p.MaleRate };
-                ChartGender.Series[1].Values = ChartGender.Series[1].Values = new ChartValues<double> { p.FemaleRate };
-                ChartAges.Series[0].Values = new ChartValues<double> { p.Age0_17 };
-                ChartAges.Series[1].Values = new ChartValues<double> { p.Age18_34 };
-                ChartAges.Series[2].Values = new ChartValues<double> { p.Age35_54 };
-                ChartAges.Series[3].Values = new ChartValues<double> { p.Age55_up };
-
-                ChartUrbanization.Series[0].Values = new ChartValues<double> { p.DeathRate };
-                ChartUrbanization.Series[1].Values = new ChartValues<double> { p.BirthRate };
+                ChartPopulationCount.Series[0].Values.Add(p.PopulationNr);
+                Labels.Add(p.Year.ToString());
             }
         }
     }

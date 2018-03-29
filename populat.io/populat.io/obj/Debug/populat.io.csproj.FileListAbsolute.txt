@@ -111,3 +111,7 @@ D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.csproj.Cor
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.csproj.CopyComplete
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.exe
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.lref

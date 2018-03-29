@@ -45,10 +45,9 @@ namespace populat.io
             using (TextReader fileReader = File.OpenText(FileName))
             {
                 var csv = new CsvReader(fileReader);
-                var records = csv.EnumerateRecords(new Population());
-                List<Population> temp = new List<Population>((IEnumerable<Population>)records);
-                City amsterdam = new City(SafeFileName, temp);
-                return amsterdam;
+                var records = csv.GetRecords<Population>();
+                List<Population> temp = new List<Population>(records);
+                return new City(SafeFileName, temp);
             }
            
         }
