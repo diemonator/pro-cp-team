@@ -91,6 +91,8 @@ namespace populat.io
             {
                 CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
                 city = flupke.ReadFile();
+                lblCityName.Content = city.Name;
+                tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
                 SetCharts();
             }
         }
@@ -137,9 +139,34 @@ namespace populat.io
                 }
             );
             foreach (Population p in city.PopulationThroughYears)
+            {               
+                if (city.PopulationThroughYears.Count() > 15)
+                {
+                    if (p.Year % 3 == 0)
+                    {
+                        ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
+                        Labels.Add(p.Year.ToString());
+                    }
+
+                }
+                else
+                {
+                    ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
+                    Labels.Add(p.Year.ToString());
+                }                
+            }
+        }
+
+        private void btnSimulate_Click(object sender, RoutedEventArgs e)
+        {
+            if (city != null)
             {
-                ChartPopulationCount.Series[0].Values.Add(p.PopulationNr);
-                Labels.Add(p.Year.ToString());
+                city.Simulate(Convert.ToInt32(tbYear.Text));
+                SetCharts();
+            }
+            else
+            {
+                lblCityName.Content = "Please load a city first";
             }
         }
     }
