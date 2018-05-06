@@ -118,3 +118,6 @@ C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_Mark
 C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
 C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
 C:\Users\user\Documents\populat.io\populat.io\populat.io\obj\Debug\populat.io.csprojResolveAssemblyReference.cache
+C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
+C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
+C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.lref

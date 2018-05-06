@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using Microsoft.Maps.MapControl.WPF;
 using Microsoft.Win32;
 
 namespace populat.io
@@ -24,10 +25,12 @@ namespace populat.io
     public partial class MainWindow : Window
     {
         private City city;
+        private Random rnd;
         public MainWindow()
         {
             InitializeComponent();
             city = null;
+            rnd = new Random();
 
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
 
@@ -94,6 +97,12 @@ namespace populat.io
                 lblCityName.Content = city.Name;
                 tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
                 SetCharts();
+                MapControl.Children.Clear();
+                for (int i = 0; i < city.PopulationThroughYears[0].PopulationNr/10; i++)
+                {           // divided by 10 means a pin every 10k people
+                    MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
+
+                }
             }
         }
 
@@ -153,7 +162,9 @@ namespace populat.io
                 {
                     ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
                     Labels.Add(p.Year.ToString());
-                }                
+                }
+
+                
             }
         }
 
@@ -169,5 +180,23 @@ namespace populat.io
                 lblCityName.Content = "Please load a city first";
             }
         }
+
+        private Location GenerateRandomPoint(double radius)
+        {
+            
+            int distance = rnd.Next((int)radius);
+            double angle = rnd.Next(360) / (2 * Math.PI);
+
+            double x = (distance * Math.Cos(angle));
+            double y = distance * Math.Sin(angle);
+
+            x /= 90;
+            y /= 90;
+            //"51.44164199999999, 5.469722499999989"
+            
+            return new Location(51.44164199999999 + x, 5.469722499999989+y);
+        }
+
     }
 }
+
