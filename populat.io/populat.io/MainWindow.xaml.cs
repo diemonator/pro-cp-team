@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using LiveCharts;
 using LiveCharts.Wpf;
 using Microsoft.Maps.MapControl.WPF;
@@ -31,14 +32,10 @@ namespace populat.io
             InitializeComponent();
             city = null;
             rnd = new Random();
-
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
-
             Labels = new List<string> { "2017", "2018", "2019", "2020", "2021" };
             ChartPopulationCount.Series[0].Values = new ChartValues<double> { 120000, 110000, 115000, 130000, 135000 };
-
             LabelsColumns = new List<string> { "Birth", "Death", "Emigration", "Immigration" };
-
             // sample data
             SeriesCollection = new SeriesCollection
             {
@@ -48,17 +45,14 @@ namespace populat.io
                     Values = new ChartValues<double> { 10, 50, 39, 50 }
                 }
             };
-
             SeriesCollection.Add(new ColumnSeries
             {
                 Title = "2016",
                 Values = new ChartValues<double> { 11, 56, 42 }
             });
-
             SeriesCollection[1].Values.Add(48d);
-
             DataContext = this;
-        }
+        }       
 
         public SeriesCollection SeriesCollection { get; set; }
         public Func<ChartPoint, string> PointLabel { get; set; }
@@ -96,20 +90,18 @@ namespace populat.io
                 city = flupke.ReadFile();
                 lblCityName.Content = city.Name;
                 tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
+                tbDelay.Text = "2";
                 SetCharts();
                 MapControl.Children.Clear();
                 for (int i = 0; i < city.PopulationThroughYears[0].PopulationNr/10; i++)
                 {           // divided by 10 means a pin every 10k people
                     MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
-
                 }
             }
         }
 
         private void SetCharts()
-        {
-            Labels.Clear();
-            ChartPopulationCount.Series[0].Values = new ChartValues<double>();
+        {                  
             ChartGender.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().MaleRate };
             ChartGender.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().FemaleRate };
             ChartAges.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age0_17 };
@@ -117,22 +109,53 @@ namespace populat.io
             ChartAges.Series[2].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age35_54 };
             ChartAges.Series[3].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age55_up };
             ChartBirthDeath.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().DeathRate };
-            ChartBirthDeath.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().BirthRate };
-            SeriesCollection.Clear();
-            SeriesCollection.Add
-            (
-                new ColumnSeries
-                {
-                    Title = city.PopulationThroughYears.First().Year.ToString(),
-                    Values = new ChartValues<double>
+            ChartBirthDeath.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().BirthRate };         
+            if (city.PopulationThroughYears.Count > ChartPopulationCount.Series[0].Values.Count)
+            {
+                ChartPopulationCount.Series[0].Values.Add(Math.Round(city.PopulationThroughYears.Last().PopulationNr));
+                Labels.Add(city.PopulationThroughYears.Last().Year.ToString());
+            }
+            else
+            {
+                SeriesCollection.Clear();
+                SeriesCollection.Add
+                (
+                    new ColumnSeries
                     {
-                        city.PopulationThroughYears.First().BirthRate,
-                        city.PopulationThroughYears.First().DeathRate,
-                        city.PopulationThroughYears.First().EmigrationRate,
-                        city.PopulationThroughYears.First().ImmigrationRate
+                        Title = city.PopulationThroughYears.First().Year.ToString(),
+                        Values = new ChartValues<double>
+                        {
+                            city.PopulationThroughYears.First().BirthRate,
+                            city.PopulationThroughYears.First().DeathRate,
+                            city.PopulationThroughYears.First().EmigrationRate,
+                            city.PopulationThroughYears.First().ImmigrationRate
+                        }
+                    }
+                );
+                Labels.Clear();
+                ChartPopulationCount.Series[0].Values = new ChartValues<double>();
+                foreach (Population p in city.PopulationThroughYears)
+                {
+                    if (city.PopulationThroughYears.Count > 15)
+                    {
+                        if (p.Year % 3 == 0)
+                        {
+                            ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
+                            Labels.Add(p.Year.ToString());
+                        }
+
+                    }
+                    else
+                    {
+                        ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
+                        Labels.Add(p.Year.ToString());
                     }
                 }
-            );
+            }
+            if (SeriesCollection.Count == 2)
+            {
+                SeriesCollection.RemoveAt(1);
+            }
             SeriesCollection.Add
             (
                 new ColumnSeries
@@ -147,33 +170,34 @@ namespace populat.io
                     }
                 }
             );
-            foreach (Population p in city.PopulationThroughYears)
-            {               
-                if (city.PopulationThroughYears.Count() > 15)
-                {
-                    if (p.Year % 3 == 0)
-                    {
-                        ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
-                        Labels.Add(p.Year.ToString());
-                    }
-
-                }
-                else
-                {
-                    ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
-                    Labels.Add(p.Year.ToString());
-                }
-
-                
-            }
         }
 
-        private void btnSimulate_Click(object sender, RoutedEventArgs e)
+        async Task DelaySim()
+        {
+            double delay;
+            if (tbDelay.Text == "")
+            {
+                delay = 0;
+            }
+            else
+            {
+                delay = Convert.ToDouble(tbDelay.Text) * 1000;
+            }           
+            await Task.Delay((int)delay);
+        }
+
+        private async void btnSimulate_Click(object sender, RoutedEventArgs e)
         {
             if (city != null)
             {
-                city.Simulate(Convert.ToInt32(tbYear.Text));
-                SetCharts();
+                // Clear previous simulated data
+                city.PopulationThroughYears.RemoveRange(city.LastRecord, city.PopulationThroughYears.Count() - city.LastRecord);
+                for (int i = city.PopulationThroughYears.Last().Year + 1; i <= Convert.ToInt32(tbYear.Text); i++)
+                {
+                    city.Simulate(i);
+                    SetCharts();
+                    await DelaySim();                  
+                }
             }
             else
             {
@@ -182,21 +206,16 @@ namespace populat.io
         }
 
         private Location GenerateRandomPoint(double radius)
-        {
-            
+        {           
             int distance = rnd.Next((int)radius);
             double angle = rnd.Next(360) / (2 * Math.PI);
-
             double x = (distance * Math.Cos(angle));
             double y = distance * Math.Sin(angle);
-
             x /= 90;
             y /= 90;
-            //"51.44164199999999, 5.469722499999989"
-            
+            //"51.44164199999999, 5.469722499999989"         
             return new Location(51.44164199999999 + x, 5.469722499999989+y);
         }
-
     }
 }
 

@@ -51,7 +51,8 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <m:Map Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,66,506,0" Height="405" VerticalAlignment="Top" MaxWidth="800"/>
+        <m:Map Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,66,506,0" Height="405" VerticalAlignment="Top" MaxWidth="800">
+        </m:Map>
         <lvc:CartesianChart Name="ChartPopulationCount" LegendLocation="Right" Margin="3,4.8,554,-119.8" MaxWidth="500" Grid.Row="1" Grid.RowSpan="2">
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="Count" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
@@ -73,10 +74,12 @@
         </lvc:CartesianChart>
         <Button x:Name="SaveCity" Content="Save City" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="SaveCity_Click" Height="19"/>
         <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click" Height="19"/>
-        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,23,0,0" VerticalAlignment="Top" Width="149" Height="30" Click="btnSimulate_Click"/>
+        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="btnSimulate_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-474,13.8,0,0" VerticalAlignment="Top" Width="75" Height="19" Grid.Row="1"/>
         <Label x:Name="lblCityName" Content="City name" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbYear" HorizontalAlignment="Left" Height="18" Margin="348,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131"/>
-        <Label Content="Year" HorizontalAlignment="Left" Margin="344,12,0,0" VerticalAlignment="Top" Height="25" Width="57"/>
+        <TextBox x:Name="tbYear" HorizontalAlignment="Left" Height="18" Margin="394,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
+        <Label Content="Year" HorizontalAlignment="Left" Margin="359,3,0,0" VerticalAlignment="Top" Height="25" Width="33" RenderTransformOrigin="1.175,0.448"/>
+        <TextBox x:Name="tbDelay" HorizontalAlignment="Left" Height="18" Margin="394,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
+        <Label x:Name="lblDelay" Content="Delay" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="1.175,0.448"/>
     </Grid>
 </Window>
