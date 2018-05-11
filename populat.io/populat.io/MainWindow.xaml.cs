@@ -92,11 +92,16 @@ namespace populat.io
                 tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
                 tbDelay.Text = "2";
                 SetCharts();
-                MapControl.Children.Clear();
-                for (int i = 0; i < city.PopulationThroughYears[0].PopulationNr/10; i++)
-                {           // divided by 10 means a pin every 10k people
-                    MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
-                }
+                PlotPopulation();
+            }
+        }
+
+        private void PlotPopulation()
+        {
+            MapControl.Children.Clear();
+            for (int i = 0; i < city.PopulationThroughYears[0].PopulationNr / 10; i++)
+            {           // divided by 10 means a pin every 10k people
+                MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
             }
         }
 
@@ -198,6 +203,7 @@ namespace populat.io
                     SetCharts();
                     await DelaySim();                  
                 }
+                PlotPopulation();
             }
             else
             {
