@@ -27,6 +27,7 @@ namespace populat.io
     {
         private City city;
         private Random rnd;
+        private Location location;
         public MainWindow()
         {
             InitializeComponent();
@@ -89,16 +90,19 @@ namespace populat.io
                 CSVHelper flupke = new CSVHelper(dlg.FileName, dlg.SafeFileName);
                 city = flupke.ReadFile();
                 lblCityName.Content = city.Name;
+                location = new Location(city.PopulationThroughYears.Last().Latitude, city.PopulationThroughYears.Last().Longitude);
                 tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
                 tbDelay.Text = "2";
                 SetCharts();
                 PlotPopulation();
+                
             }
         }
 
         private void PlotPopulation()
         {
             MapControl.Children.Clear();
+            MapControl.Center = location;
             for (int i = 0; i < city.PopulationThroughYears[0].PopulationNr / 10; i++)
             {           // divided by 10 means a pin every 10k people
                 MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
@@ -220,7 +224,7 @@ namespace populat.io
             x /= 90;
             y /= 90;
             //"51.44164199999999, 5.469722499999989"         
-            return new Location(51.44164199999999 + x, 5.469722499999989+y);
+            return new Location(location.Latitude + x, location.Longitude +y);
         }
     }
 }

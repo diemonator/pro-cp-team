@@ -22,9 +22,11 @@ namespace populat.io
         public double Age18_34 { get; set; }
         public double Age35_54 { get; set; }
         public double Age55_up { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
 
-        public Population(int year, double deathRate, double birthRate, double immigrationRate, double emigrationRate, double populationNr, double averageAge, double maleRate, double femaleRate, double growthRate, double kids, double adults, double older, double elderly)
+        public Population(int year, double deathRate, double birthRate, double immigrationRate, double emigrationRate, double populationNr, double averageAge, double maleRate, double femaleRate, double growthRate, double kids, double adults, double older, double elderly, double latitude, double longitude)
         {
             Year = year;
             DeathRate = deathRate;
@@ -40,6 +42,8 @@ namespace populat.io
             Age18_34 = adults;
             Age35_54 = older;
             Age55_up = elderly;
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
         public Population()

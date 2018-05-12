@@ -51,7 +51,7 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <m:Map Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,66,506,0" Height="405" VerticalAlignment="Top" MaxWidth="800">
+        <m:Map Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center = "51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,66,506,0" Height="405" VerticalAlignment="Top" MaxWidth="800">
         </m:Map>
         <lvc:CartesianChart Name="ChartPopulationCount" LegendLocation="Right" Margin="3,4.8,554,-119.8" MaxWidth="500" Grid.Row="1" Grid.RowSpan="2">
             <lvc:CartesianChart.AxisY>
