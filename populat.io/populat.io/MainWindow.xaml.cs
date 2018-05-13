@@ -179,6 +179,7 @@ namespace populat.io
                     }
                 }
             );
+            lblCurrentYear.Content = "Current year of the simulation :" + city.PopulationThroughYears.Last().Year;
         }
 
         async Task DelaySim()

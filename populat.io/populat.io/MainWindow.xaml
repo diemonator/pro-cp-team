@@ -81,5 +81,6 @@
         <Label Content="Year" HorizontalAlignment="Left" Margin="359,3,0,0" VerticalAlignment="Top" Height="25" Width="33" RenderTransformOrigin="1.175,0.448"/>
         <TextBox x:Name="tbDelay" HorizontalAlignment="Left" Height="18" Margin="394,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="lblDelay" Content="Delay" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="1.175,0.448"/>
+        <Label x:Name ="lblCurrentYear" Content="Current year of the simulation :" HorizontalAlignment="Left" Margin="666,20,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
