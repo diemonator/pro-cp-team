@@ -98,7 +98,6 @@ D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\LiveCharts.xml
 D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\LiveCharts.Wpf.pdb
 D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\LiveCharts.Wpf.xml
 D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
-D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.csprojResolveAssemblyReference.cache
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\MainWindow.g.cs
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\App.g.cs
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.cache
@@ -146,3 +145,4 @@ C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.i
 C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io.csproj.CopyComplete
 C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io.exe
 C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
+D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.csprojAssemblyReference.cache

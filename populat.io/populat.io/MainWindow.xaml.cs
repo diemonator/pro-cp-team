@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +34,15 @@ namespace populat.io
         {
             InitializeComponent();
             city = null;
+            NumberFormatInfo numberFormat = new NumberFormatInfo();
+            string CultureName = Thread.CurrentThread.CurrentCulture.Name;
+            CultureInfo ci = new CultureInfo(CultureName);
+            if (ci.NumberFormat.NumberDecimalSeparator != ".")
+            {
+                // Forcing use of decimal separator for numerical values
+                ci.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = ci;
+            }
             rnd = new Random();
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
             Labels = new List<string> { "2017", "2018", "2019", "2020", "2021" };
