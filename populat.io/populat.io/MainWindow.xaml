@@ -84,6 +84,6 @@
         <Label x:Name ="lblCurrentYear" Content="Current year of the simulation :" HorizontalAlignment="Left" Margin="666,20,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkB_Disease" Content="Diseases" HorizontalAlignment="Left" Margin="898,25,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkB_Weather" Content="Weather" HorizontalAlignment="Left" Margin="974,25,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkB_Other" Content="War" HorizontalAlignment="Left" Margin="1050,25,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkB_Other" Content="Other" HorizontalAlignment="Left" Margin="1050,25,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
