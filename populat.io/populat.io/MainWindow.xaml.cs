@@ -207,10 +207,11 @@ namespace populat.io
             await Task.Delay((int)delay);
         }
 
-        private async void btnSimulate_Click(object sender, RoutedEventArgs e)
+        private async void BtnSimulate_Click(object sender, RoutedEventArgs e)
         {
             if (city != null)
             {
+                EnableCheckBoxes(false);
                 // Clear previous simulated data
                 city.PopulationThroughYears.RemoveRange(city.LastRecord, city.PopulationThroughYears.Count() - city.LastRecord);
                 for (int i = city.PopulationThroughYears.Last().Year + 1; i <= Convert.ToInt32(tbYear.Text); i++)
@@ -219,6 +220,7 @@ namespace populat.io
                     SetCharts();
                     await DelaySim();                  
                 }
+                EnableCheckBoxes(true);
                 PlotPopulation();
             }
             else
@@ -237,6 +239,13 @@ namespace populat.io
             y /= 90;
             //"51.44164199999999, 5.469722499999989"         
             return new Location(location.Latitude + x, location.Longitude +y);
+        }
+
+        private void EnableCheckBoxes(bool state)
+        {
+            checkB_Disease.IsEnabled = state;
+            checkB_Weather.IsEnabled = state;
+            checkB_Other.IsEnabled = state;
         }
     }
 }

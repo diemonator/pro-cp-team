@@ -74,7 +74,7 @@
         </lvc:CartesianChart>
         <Button x:Name="SaveCity" Content="Save City" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="SaveCity_Click" Height="19"/>
         <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click" Height="19"/>
-        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="btnSimulate_Click"/>
+        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="BtnSimulate_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-474,13.8,0,0" VerticalAlignment="Top" Width="75" Height="19" Grid.Row="1"/>
         <Label x:Name="lblCityName" Content="City name" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbYear" HorizontalAlignment="Left" Height="18" Margin="394,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
@@ -82,8 +82,8 @@
         <TextBox x:Name="tbDelay" HorizontalAlignment="Left" Height="18" Margin="394,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="lblDelay" Content="Delay" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="1.175,0.448"/>
         <Label x:Name ="lblCurrentYear" Content="Current year of the simulation :" HorizontalAlignment="Left" Margin="666,20,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Diseases" HorizontalAlignment="Left" Margin="854,26,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Weather" HorizontalAlignment="Left" Margin="930,26,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="War" HorizontalAlignment="Left" Margin="1006,26,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkB_Disease" Content="Diseases" HorizontalAlignment="Left" Margin="898,25,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkB_Weather" Content="Weather" HorizontalAlignment="Left" Margin="974,25,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkB_Other" Content="War" HorizontalAlignment="Left" Margin="1050,25,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
