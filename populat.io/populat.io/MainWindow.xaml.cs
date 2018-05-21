@@ -110,6 +110,30 @@ namespace populat.io
             }
         }
 
+        void addNewPolygon()
+        {
+            MapPolygon polygon = new MapPolygon();
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            polygon.StrokeThickness = 5;
+            polygon.Opacity = 0.4;
+            polygon.Locations = new LocationCollection() {
+                new Location(location.Latitude + 0.03, location.Longitude - 0.07),
+                new Location(location.Latitude + 0.05, location.Longitude - 0.05),
+                new Location(location.Latitude + 0.06, location.Longitude), //
+                new Location(location.Latitude + 0.05, location.Longitude + 0.05),
+                new Location(location.Latitude + 0.03, location.Longitude + 0.07),
+                new Location(location.Latitude, location.Longitude + 0.08), //
+                new Location(location.Latitude - 0.03, location.Longitude + 0.07),
+                new Location(location.Latitude - 0.05, location.Longitude + 0.05),
+                new Location(location.Latitude - 0.06, location.Longitude), //
+                new Location(location.Latitude - 0.05, location.Longitude - 0.05),
+                new Location(location.Latitude - 0.03, location.Longitude - 0.07),
+                new Location(location.Latitude, location.Longitude - 0.08)
+            };
+            MapControl.Children.Add(polygon);
+        }
+
         private void PlotPopulation()
         {
             MapControl.Children.Clear();
@@ -118,6 +142,7 @@ namespace populat.io
             {           // divided by 10 means a pin every 10k people
                 MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
             }
+            addNewPolygon();
         }
 
         private void SetCharts()
