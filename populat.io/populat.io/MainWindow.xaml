@@ -14,7 +14,7 @@
             <RowDefinition Height="192*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="636,66,47,0" Height="133" VerticalAlignment="Top" MaxWidth="500">
+        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="636,161,25,0" Height="102" VerticalAlignment="Top" MaxWidth="500">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="Male" Values="1" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
@@ -25,7 +25,7 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Margin="636,204,47,0" Height="133" VerticalAlignment="Top" MaxWidth="500">
+        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Margin="636,267,25,0" Height="101" VerticalAlignment="Top" MaxWidth="500">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="0-17" Values="3" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
@@ -40,7 +40,7 @@
                 <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
-        <lvc:PieChart x:Name="ChartBirthDeath" LegendLocation="Right" Hoverable="True" Margin="650,336,33,0" Height="135" VerticalAlignment="Top" MaxWidth="500">
+        <lvc:PieChart x:Name="ChartBirthDeath" LegendLocation="Right" Hoverable="True" Margin="651,368,10,0" Height="103" VerticalAlignment="Top" MaxWidth="500">
             <lvc:PieChart.Series>
                 <lvc:PieSeries Title="Death Rate" Values="11" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
@@ -76,14 +76,15 @@
         <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click" Height="19"/>
         <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="btnSimulate_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-474,13.8,0,0" VerticalAlignment="Top" Width="75" Height="19" Grid.Row="1"/>
-        <Label x:Name="lblCityName" Content="City name" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="lblCityName" Content="Please load a city" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbYear" HorizontalAlignment="Left" Height="18" Margin="394,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
         <Label Content="Year" HorizontalAlignment="Left" Margin="359,3,0,0" VerticalAlignment="Top" Height="25" Width="33" RenderTransformOrigin="1.175,0.448"/>
         <TextBox x:Name="tbDelay" HorizontalAlignment="Left" Height="18" Margin="394,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="lblDelay" Content="Delay" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="1.175,0.448"/>
-        <Label x:Name ="lblCurrentYear" Content="Current year of the simulation :" HorizontalAlignment="Left" Margin="666,20,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Diseases" HorizontalAlignment="Left" Margin="854,26,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Weather" HorizontalAlignment="Left" Margin="930,26,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="War" HorizontalAlignment="Left" Margin="1006,26,0,0" VerticalAlignment="Top"/>
+        <Label x:Name ="lblCurrentYear" Content="Current year of the simulation: " HorizontalAlignment="Left" Margin="638,20,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbDisease" Content="Diseases" HorizontalAlignment="Left" Margin="854,26,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="cbWeather" Content="Weather" HorizontalAlignment="Left" Margin="930,26,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="cbWar" Content="War" HorizontalAlignment="Left" Margin="1006,26,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <ListBox x:Name="lbEventLog" HorizontalAlignment="Left" Height="105" Margin="651,51,0,0" VerticalAlignment="Top" Width="463"/>
     </Grid>
 </Window>

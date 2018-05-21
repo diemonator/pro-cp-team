@@ -28,7 +28,7 @@ namespace populat.io
 
         }
 
-        public void Simulate(int year)
+        public List<string> Simulate(int year, EventHelper eh)
         {
             double i = 0;
             double BirthDifference;
@@ -69,8 +69,9 @@ namespace populat.io
                 Age55_up = lastYear.Age55_up * GetRandomNumber()
             };
             //moved growth rate out of the initialization since it needs this years population and lasts to calculate the difference
-            p.GrowthRate = 100 * p.PopulationNr / lastYear.PopulationNr;
+            p.GrowthRate = 100 * p.PopulationNr / lastYear.PopulationNr;          
             PopulationThroughYears.Add(p);
+            return eh.SimulateEvents(p);   
         }
 
         private double GetRandomNumber()

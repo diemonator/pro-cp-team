@@ -215,7 +215,7 @@ namespace populat.io
                     }
                 }
             );
-            lblCurrentYear.Content = "Current year of the simulation :" + city.PopulationThroughYears.Last().Year;
+            lblCurrentYear.Content = "Current year of the simulation: " + city.PopulationThroughYears.Last().Year;
         }
 
         async Task DelaySim()
@@ -238,9 +238,15 @@ namespace populat.io
             {
                 // Clear previous simulated data
                 city.PopulationThroughYears.RemoveRange(city.LastRecord, city.PopulationThroughYears.Count() - city.LastRecord);
+                EventHelper eh = new EventHelper((bool)cbDisease.IsChecked, (bool)cbWeather.IsChecked, (bool)cbWar.IsChecked);
+                lbEventLog.Items.Clear();
                 for (int i = city.PopulationThroughYears.Last().Year + 1; i <= Convert.ToInt32(tbYear.Text); i++)
                 {
-                    city.Simulate(i);
+                    List<string> outcomes = city.Simulate(i, eh);
+                    foreach (string s in outcomes)
+                    {
+                        lbEventLog.Items.Add(s);
+                    }
                     SetCharts();
                     await DelaySim();                  
                 }
