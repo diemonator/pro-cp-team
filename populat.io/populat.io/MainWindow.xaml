@@ -7,7 +7,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="826.628" Width="1145.582">
+        Title="MainWindow" Height="826.628" Width="1150.082">
     <Grid Margin="0,0,0.2,0" Height="667" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="471*"/>
@@ -81,10 +81,13 @@
         <Label Content="Year" HorizontalAlignment="Left" Margin="359,3,0,0" VerticalAlignment="Top" Height="25" Width="33" RenderTransformOrigin="1.175,0.448"/>
         <TextBox x:Name="tbDelay" HorizontalAlignment="Left" Height="18" Margin="394,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="lblDelay" Content="Delay" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="1.175,0.448"/>
-        <Label x:Name ="lblCurrentYear" Content="Current year of the simulation: " HorizontalAlignment="Left" Margin="638,20,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbDisease" Content="Diseases" HorizontalAlignment="Left" Margin="854,26,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="cbWeather" Content="Weather" HorizontalAlignment="Left" Margin="930,26,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="cbWar" Content="War" HorizontalAlignment="Left" Margin="1006,26,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <ListBox x:Name="lbEventLog" HorizontalAlignment="Left" Height="105" Margin="651,51,0,0" VerticalAlignment="Top" Width="463"/>
+        <Label x:Name ="lblCurrentYear" Content="Current year of the simulation: " HorizontalAlignment="Left" Margin="633,11,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbDisease" Content="Diseases" HorizontalAlignment="Left" Margin="835,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="cbWeather" Content="Weather" HorizontalAlignment="Left" Margin="911,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="cbWar" Content="War" HorizontalAlignment="Left" Margin="987,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <ListBox x:Name="lbEventLog" HorizontalAlignment="Center"  Height="105" Margin="651,51,0,0" VerticalAlignment="Top" Width="463"/>
+        <CheckBox x:Name="cbBetterMedication" Content="Better Medication" HorizontalAlignment="Left" Margin="1033,9,-5.2,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="cbHigherImmigration" Content="Higher Immigration" HorizontalAlignment="Left" Margin="835,28,0,0" VerticalAlignment="Top" IsChecked="True" />
+        <CheckBox x:Name="cbHigherIncome" Content="Higher income"  HorizontalAlignment="Left" Margin="964,29,0,0" VerticalAlignment="Top" IsChecked="True"/>
     </Grid>
 </Window>
