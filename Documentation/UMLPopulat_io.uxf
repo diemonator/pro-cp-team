@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>280</y>
+      <w>410</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>City
+--
+
+--
++ &lt;&lt;property&gt;&gt; LastRecord: int
++ &lt;&lt;property&gt;&gt; Name: string
++ &lt;&lt;property&gt;&gt; PopulationRate: double
++ &lt;&lt;property&gt;&gt; PopulationThroughYears: List&lt;Population&gt;
++ &lt;&lt;ctor&gt;&gt;City(string name, List&lt;Population&gt; data)
+- Diffrence(double lastYear, double lastLastYear): double
+- GetRandomNumber(): double
+- GetRandomNumber2(): double
++ Simulate(int year, EventHelper eh): List&lt;string&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>700</y>
+      <w>340</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>CSVHelper
+--
+- safeFileName: string
+--
++ &lt;&lt;property&gt;&gt; FileName: string
++ &lt;&lt;property&gt;&gt; SafeFileName: string
+--
++ CSVHelper()
++ CSVHelper(string fileName, string safeFileName)
++ ReadFile(): City
++ WriteFile(City city): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>540</y>
+      <w>500</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes>Population
+--
+
+--
++ &lt;&lt;property&gt;&gt; Age0_17: double
++ &lt;&lt;property&gt;&gt; Age18_34: double
++ &lt;&lt;property&gt;&gt; Age35_54: double
++ &lt;&lt;property&gt;&gt; Age55_up: double
++ &lt;&lt;property&gt;&gt; AverageAge: double
++ &lt;&lt;property&gt;&gt; BirthRate: double
++ &lt;&lt;property&gt;&gt; DeathRate: double
++ &lt;&lt;property&gt;&gt; Emigation: double
++ &lt;&lt;property&gt;&gt; Immigartion: double
++ &lt;&lt;property&gt;&gt; FemaleRate: double
++ &lt;&lt;property&gt;&gt; MaleRate: double
++ &lt;&lt;property&gt;&gt; GrowthRate: double
++ &lt;&lt;property&gt;&gt; Latitude: double
++ &lt;&lt;property&gt;&gt; Longitude: double
++ &lt;&lt;property&gt;&gt; PopulationNr: double
++ &lt;&lt;property&gt;&gt; Year: int
++ &lt;&lt;ctor&gt;&gt; Population()
++ &lt;&lt;ctor&gt;&gt; Population(int year, double Age0_17, double Age18_34,
+double Age35_54, double Age55_up, double AverageAge, double BirthRate, 
+double DeathRate, double Emigation, double Immigartion, double FemaleRate,
+double MaleeRate, double GrowthRate, double Latitude, double Longitude,
+double PopulationNr, double Year)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>10</y>
+      <w>510</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>EventHelper
+--
+- allowBetterMedication: bool
+- allowDisease: bool
+- allowHigherAverageIncome: bool
+- allowHigherImmigration: bool
+- allowWar: bool
+- allowWeather: bool
+--
++ &lt;&lt;ctor&gt;&gt; EventHelper(allowBetterMedication: bool, allowDisease: bool,
+allowHigherAverageIncome: bool, allowHigherImmigration: bool, allowWar: bool, 
+allowWeather: bool)
+- SimulateBetterMedcation(Population p): string
+- SimulateDisease(Population p): string
++ SimulateEvents(Population p): List&lt;string&gt;
+- SimulateHigherAverageIncome(Population p): string
+- SimulateHigherImmigartion(Population p): string
+- SimulateWar(Population p): string
+- SimulateWeather(Population p): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>50</y>
+      <w>250</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;static class&gt;&gt;
+_StaticRandom_
+--
+_- seed: int_
+_- threadLocal: ThreadLocal&lt;Random&gt;_
+--
+_+ &lt;&lt;get&gt;&gt; Instance: Random_
+_- &lt;&lt;ctor&gt;&gt; StaticRandom _</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>860</x>
+      <y>350</y>
+      <w>390</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>MainWindow
+--
+- city: City
+- location: Location
+- rnd: Random
+--
++ &lt;&lt;property&gt;&gt; Labels: List&lt;string&gt;
++ &lt;&lt;property&gt;&gt; LabelsColumns: List&lt;string&gt;
++ &lt;&lt;property&gt;&gt; PointLabel: Func&lt;ChartPoint, string&gt;
++ &lt;&lt;property&gt;&gt; SeriesCollection: SeriesCollection
++ &lt;&lt;ctor&gt;&gt; MainWindow()
+- addNewPolygone(): void
+- btnSimulate_Click(object sender, RoutedEvntArgs e): void
+- DelaySim(): Task
+- GenerateRandomPoint(double radius): Location
+- LoadCity_Click(object sender, RoutedEventArgs e): void
+- PlotPopulation(): void
+- SaveCity_Click(object sender, RoutedEvntArgs e): void
+- SetCharts(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1060</x>
+      <y>630</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>380</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>470</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>100</y>
+      <w>170</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>290</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
