@@ -1,0 +1,3 @@
+Year,DeathRate,BirthRate,ImmigrationRate,EmigrationRate,PopulationNr,AverageAge,MaleRate,FemaleRate,GrowthRate,Age0_17,Age18_34,Age35_54,Age55_up,Latitude,Longitude
+2013,0.29,0.33,0.1053,0.0902,618.357,38.7,0.493,0.507,0.007,0.19,0.27,0.28,0.26,51.9225,4.47917
+2015,0.65,0.95,0.245,0.1234,629.606,37.9,0.51,0.49,0.0085,0.234,0.28,0.31,0.23,51.9225,4.47917
