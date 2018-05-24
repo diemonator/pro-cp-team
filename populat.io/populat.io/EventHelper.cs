@@ -48,7 +48,7 @@ namespace populat.io
                 outcomes.Add(SimulateWar(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            // 10% for medication to improve
+            // 10% for increase in immigation
             if (allowHigherImmigration && chance < 10)
             {
                 outcomes.Add(SimulateHigherImmigration(p));
@@ -71,41 +71,86 @@ namespace populat.io
         private string SimulateDisease(Population p)
         {
             double deathPercentage = StaticRandom.Instance.Next(10, 30);
+            double emigrationRate = StaticRandom.Instance.Next(5, 10);
+            double immmigrationRate = StaticRandom.Instance.Next(5, 10);
+            double deathRate = StaticRandom.Instance.Next(10, 30);
             p.PopulationNr -= p.PopulationNr * deathPercentage * 0.01;
+            p.EmigrationRate += p.EmigrationRate * emigrationRate * 0.01;
+            p.ImmigrationRate -= p.ImmigrationRate * immmigrationRate * 0.01;
+            p.DeathRate += p.DeathRate * deathRate * 0.01;
             return "Disease outbreak in " + p.Year + " killed " + deathPercentage + "%";
         }
 
         private string SimulateWeather(Population p)
         {
             double deathPercentage = StaticRandom.Instance.Next(5, 10);
+            double emigrationRate = StaticRandom.Instance.Next(5, 10);
+            double immmigrationRate = StaticRandom.Instance.Next(5, 10);
+            double deathRate = StaticRandom.Instance.Next(5, 15);
             p.PopulationNr -= p.PopulationNr * deathPercentage * 0.01;
+            p.EmigrationRate += p.EmigrationRate * emigrationRate * 0.01;
+            p.ImmigrationRate -= p.ImmigrationRate * immmigrationRate * 0.01;
+            p.DeathRate += p.DeathRate * deathRate * 0.01;
             return "Bad weather event in " + p.Year + " killed " + deathPercentage + "%";
         }
 
         private string SimulateWar(Population p)
         {
             double deathPercentage = StaticRandom.Instance.Next(10, 40);
+            double emigrationRate = StaticRandom.Instance.Next(15, 30);
+            double immmigrationRate = StaticRandom.Instance.Next(15, 30);
+            double birthRate = StaticRandom.Instance.Next(5, 15);
+            double deathRate = StaticRandom.Instance.Next(15, 45);
+            double maleRate = StaticRandom.Instance.Next(5, 15);
             p.PopulationNr -= p.PopulationNr * deathPercentage * 0.01;
+            p.EmigrationRate += p.EmigrationRate * emigrationRate * 0.01;
+            p.ImmigrationRate -= p.ImmigrationRate * immmigrationRate * 0.01;
+            p.BirthRate += p.BirthRate * birthRate * 0.01;
+            p.DeathRate += p.DeathRate * deathRate * 0.01;
+            p.MaleRate -= p.MaleRate * maleRate * 0.01;
             return "War in " + p.Year + " killed " + deathPercentage + "%";
         }
 
         private string SimulateHigherImmigration(Population p)
         {
             double immigrationRate = StaticRandom.Instance.Next(5, 20);
+            double emigrationRate = StaticRandom.Instance.Next(5, 10);
+            double birthRate = StaticRandom.Instance.Next(10, 15);
+            double deathRate = StaticRandom.Instance.Next(5, 15);
             p.PopulationNr += p.PopulationNr * immigrationRate * 0.01;
+            p.EmigrationRate -= p.EmigrationRate * emigrationRate * 0.01;
+            p.ImmigrationRate += p.ImmigrationRate * immigrationRate * 0.01;
+            p.BirthRate += p.BirthRate * birthRate * 0.01;
+            p.DeathRate += p.DeathRate * deathRate * 0.01;
             return "Spike in immigration in " + p.Year + ". Population increased with " + immigrationRate + "%";
         }
 
         private string SimulateBetterMedication(Population p)
         {
             double populationIncreaseRate = StaticRandom.Instance.Next(5, 25);
+            double immigrationRate = StaticRandom.Instance.Next(5, 20);
+            double emigrationRate = StaticRandom.Instance.Next(5, 10);
+            double birthRate = StaticRandom.Instance.Next(5, 15);
+            double deathRate = StaticRandom.Instance.Next(25, 45);
             p.PopulationNr += p.PopulationNr * populationIncreaseRate * 0.01;
+            p.EmigrationRate -= p.EmigrationRate * emigrationRate * 0.01;
+            p.ImmigrationRate += p.ImmigrationRate * immigrationRate * 0.01;
+            p.BirthRate += p.BirthRate * birthRate * 0.01;
+            p.DeathRate -= p.DeathRate * deathRate * 0.01;
             return "Improvements in medication in " + p.Year + ". Population increased with " + populationIncreaseRate + "%";
         }
         private string SimulateHigherAverageIncome(Population p)
         {
             double populationIncreaseRate = StaticRandom.Instance.Next(5, 10);
+            double immigrationRate = StaticRandom.Instance.Next(5, 20);
+            double emigrationRate = StaticRandom.Instance.Next(5, 10);
+            double birthRate = StaticRandom.Instance.Next(5, 15);
+            double deathRate = StaticRandom.Instance.Next(10, 15);
             p.PopulationNr += p.PopulationNr * populationIncreaseRate * 0.01;
+            p.EmigrationRate -= p.EmigrationRate * emigrationRate * 0.01;
+            p.ImmigrationRate += p.ImmigrationRate * immigrationRate * 0.01;
+            p.BirthRate += p.BirthRate * birthRate * 0.01;
+            p.DeathRate -= p.DeathRate * deathRate * 0.01;
             return "Average income increased in " + p.Year + ". Population increased with " + populationIncreaseRate + "%";
         }
     }
