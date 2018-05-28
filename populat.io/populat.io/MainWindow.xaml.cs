@@ -67,14 +67,14 @@ namespace populat.io
             using (var context = new dbi359591Entities())
             {
                 var cities = (from b in context.PopulationTables
-                            select b.City).Distinct();
+                              select b.City).Distinct();
                 citiesList = cities.ToList();
             }
             foreach (var city in citiesList)
             {
                 cb_cities.Items.Add(city);
             }
-        }       
+        }
 
         public SeriesCollection SeriesCollection { get; set; }
         public Func<ChartPoint, string> PointLabel { get; set; }
@@ -149,8 +149,8 @@ namespace populat.io
         private void AddNewPolygon()
         {
             MapPolygon polygon = new MapPolygon();
-            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
-            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            polygon.Fill = new SolidColorBrush(Colors.White);
+            polygon.Stroke = new SolidColorBrush(Colors.Red);
             polygon.StrokeThickness = 5;
             polygon.Opacity = 0.4;
             polygon.Locations = new LocationCollection() {
@@ -182,7 +182,7 @@ namespace populat.io
         }
 
         private void SetCharts()
-        {                  
+        {
             ChartGender.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().MaleRate };
             ChartGender.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().FemaleRate };
             ChartAges.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age0_17 };
@@ -190,7 +190,7 @@ namespace populat.io
             ChartAges.Series[2].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age35_54 };
             ChartAges.Series[3].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age55_up };
             ChartBirthDeath.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().DeathRate };
-            ChartBirthDeath.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().BirthRate };         
+            ChartBirthDeath.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().BirthRate };
             if (city.PopulationThroughYears.Count > ChartPopulationCount.Series[0].Values.Count)
             {
                 ChartPopulationCount.Series[0].Values.Add(Math.Round(city.PopulationThroughYears.Last().PopulationNr));
@@ -199,20 +199,18 @@ namespace populat.io
             else
             {
                 SeriesCollection.Clear();
-                SeriesCollection.Add
-                (
-                    new ColumnSeries
+                var check = city.PopulationThroughYears.First().BirthRate;
+                SeriesCollection.Add(new ColumnSeries
+                {
+                    Title = city.PopulationThroughYears.First().Year.ToString(),
+                    Values = new ChartValues<double>
                     {
-                        Title = city.PopulationThroughYears.First().Year.ToString(),
-                        Values = new ChartValues<double>
-                        {
-                            city.PopulationThroughYears.First().BirthRate,
-                            city.PopulationThroughYears.First().DeathRate,
-                            city.PopulationThroughYears.First().EmigrationRate,
-                            city.PopulationThroughYears.First().ImmigrationRate
-                        }
+                        city.PopulationThroughYears.First().BirthRate,
+                        city.PopulationThroughYears.First().DeathRate,
+                        city.PopulationThroughYears.First().EmigrationRate,
+                        city.PopulationThroughYears.First().ImmigrationRate
                     }
-                );
+                });
                 Labels.Clear();
                 ChartPopulationCount.Series[0].Values = new ChartValues<double>();
                 foreach (Population p in city.PopulationThroughYears)
@@ -224,7 +222,6 @@ namespace populat.io
                             ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
                             Labels.Add(p.Year.ToString());
                         }
-
                     }
                     else
                     {
@@ -237,20 +234,17 @@ namespace populat.io
             {
                 SeriesCollection.RemoveAt(1);
             }
-            SeriesCollection.Add
-            (
-                new ColumnSeries
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = city.PopulationThroughYears.Last().Year.ToString(),
+                Values = new ChartValues<double>
                 {
-                    Title = city.PopulationThroughYears.Last().Year.ToString(),
-                    Values = new ChartValues<double>
-                    {
-                        city.PopulationThroughYears.Last().BirthRate,
-                        city.PopulationThroughYears.Last().DeathRate,
-                        city.PopulationThroughYears.Last().EmigrationRate,
-                        city.PopulationThroughYears.Last().ImmigrationRate
-                    }
+                    city.PopulationThroughYears.Last().BirthRate,
+                    city.PopulationThroughYears.Last().DeathRate,
+                    city.PopulationThroughYears.Last().EmigrationRate,
+                    city.PopulationThroughYears.Last().ImmigrationRate
                 }
-            );
+            });
             lblCurrentYear.Content = "Current year of the simulation: " + city.PopulationThroughYears.Last().Year;
         }
 
@@ -264,7 +258,7 @@ namespace populat.io
             else
             {
                 delay = Convert.ToDouble(tbDelay.Text) * 1000;
-            }           
+            }
             await Task.Delay((int)delay);
         }
 
@@ -275,7 +269,7 @@ namespace populat.io
                 // Clear previous simulated data
                 city.PopulationThroughYears.RemoveRange(city.LastRecord, city.PopulationThroughYears.Count() - city.LastRecord);
                 EventHelper eh = new EventHelper((bool)cbDisease.IsChecked, (bool)cbWeather.IsChecked, (bool)cbWar.IsChecked,
-                    (bool)cbHigherImmigration.IsChecked,(bool)cbBetterMedication.IsChecked, (bool)cbHigherIncome.IsChecked);
+                    (bool)cbHigherImmigration.IsChecked, (bool)cbBetterMedication.IsChecked, (bool)cbHigherIncome.IsChecked);
                 lbEventLog.Items.Clear();
                 for (int i = city.PopulationThroughYears.Last().Year + 1; i <= Convert.ToInt32(tbYear.Text); i++)
                 {
@@ -285,7 +279,7 @@ namespace populat.io
                         lbEventLog.Items.Add(s);
                     }
                     SetCharts();
-                    await DelaySim();                  
+                    await DelaySim();
                 }
                 PlotPopulation();
             }
@@ -296,7 +290,7 @@ namespace populat.io
         }
 
         private Location GenerateRandomPoint(double radius)
-        {           
+        {
             int distance = rnd.Next((int)radius);
             double angle = rnd.Next(360) / (2 * Math.PI);
             double x = (distance * Math.Cos(angle));
@@ -304,11 +298,12 @@ namespace populat.io
             x /= 90;
             y /= 90;
             //"51.44164199999999, 5.469722499999989"         
-            return new Location(location.Latitude + x, location.Longitude +y);
+            return new Location(location.Latitude + x, location.Longitude + y);
         }
 
         private void Cb_cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            city = null;
             List<string> citiesList = new List<string>();
             using (var context = new dbi359591Entities())
             {
@@ -340,14 +335,76 @@ namespace populat.io
                         PopulationNr = c.PopulationNr
                     });
                 }
-                city = new City(dbcity.First().City,tempList);
+                city = new City(dbcity.First().City, tempList);
             }
             lblCityName.Content = city.Name;
             location = new Location(city.PopulationThroughYears.Last().Latitude, city.PopulationThroughYears.Last().Longitude);
             tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
             tbDelay.Text = "2";
-            SetCharts();
+            DatabaseLoadCharts();
             PlotPopulation();
+        }
+        // Normal Method SetCharts() doesn't work here
+        private void DatabaseLoadCharts()
+        {
+            ChartGender.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().MaleRate };
+            ChartGender.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().FemaleRate };
+            ChartAges.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age0_17 };
+            ChartAges.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age18_34 };
+            ChartAges.Series[2].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age35_54 };
+            ChartAges.Series[3].Values = new ChartValues<double> { city.PopulationThroughYears.Last().Age55_up };
+            ChartBirthDeath.Series[0].Values = new ChartValues<double> { city.PopulationThroughYears.Last().DeathRate };
+            ChartBirthDeath.Series[1].Values = new ChartValues<double> { city.PopulationThroughYears.Last().BirthRate };
+            ChartPopulationCount.Series[0].Values.Add(Math.Round(city.PopulationThroughYears.Last().PopulationNr));
+            Labels.Add(city.PopulationThroughYears.Last().Year.ToString());
+
+            SeriesCollection.Clear();
+            var check = city.PopulationThroughYears.First().BirthRate;
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = city.PopulationThroughYears.First().Year.ToString(),
+                Values = new ChartValues<double>
+                    {
+                        city.PopulationThroughYears.First().BirthRate,
+                        city.PopulationThroughYears.First().DeathRate,
+                        city.PopulationThroughYears.First().EmigrationRate,
+                        city.PopulationThroughYears.First().ImmigrationRate
+                    }
+            });
+            Labels.Clear();
+            ChartPopulationCount.Series[0].Values = new ChartValues<double>();
+            foreach (Population p in city.PopulationThroughYears)
+            {
+                if (city.PopulationThroughYears.Count > 15)
+                {
+                    if (p.Year % 3 == 0)
+                    {
+                        ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
+                        Labels.Add(p.Year.ToString());
+                    }
+                }
+                else
+                {
+                    ChartPopulationCount.Series[0].Values.Add(Math.Round(p.PopulationNr));
+                    Labels.Add(p.Year.ToString());
+                }
+            }
+            if (SeriesCollection.Count == 2)
+            {
+                SeriesCollection.RemoveAt(1);
+            }
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = city.PopulationThroughYears.Last().Year.ToString(),
+                Values = new ChartValues<double>
+                {
+                    city.PopulationThroughYears.Last().BirthRate,
+                    city.PopulationThroughYears.Last().DeathRate,
+                    city.PopulationThroughYears.Last().EmigrationRate,
+                    city.PopulationThroughYears.Last().ImmigrationRate
+                }
+            });
+            lblCurrentYear.Content = "Current year of the simulation: " + city.PopulationThroughYears.Last().Year;
         }
     }
 }
