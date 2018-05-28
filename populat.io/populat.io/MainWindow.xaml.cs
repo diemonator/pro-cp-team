@@ -65,6 +65,17 @@ namespace populat.io
             });
             SeriesCollection[1].Values.Add(48d);
             DataContext = this;
+            List<string> citiesList = new List<string>();
+            using (var context = new dbi359591Entities())
+            {
+                var cities = (from b in context.PopulationTables
+                            select b.City).Distinct();
+                citiesList = cities.ToList();
+            }
+            foreach (var city in citiesList)
+            {
+                cb_cities.Items.Add(city);
+            }
         }       
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -107,32 +118,33 @@ namespace populat.io
                 tbDelay.Text = "2";
                 SetCharts();
                 PlotPopulation();
-                var context = new dbi359591Entities();
-                
-
-                foreach (var c in city.PopulationThroughYears)
+                //Adding the cities
+                /*using (var context = new dbi359591Entities())
                 {
-                    var cityTable = new PopulationTable();
-                    cityTable.City = city.Name;
-                    cityTable.Year = c.Year;
-                    cityTable.Age0_17 = c.Age0_17;
-                    cityTable.Age18_34 = c.Age18_34;
-                    cityTable.Age35_54 = c.Age35_54;
-                    cityTable.Age55_Up = c.Age55_up;
-                    cityTable.AverageAge = c.AverageAge;
-                    cityTable.BirthRate = c.BirthRate;
-                    cityTable.DeathRate = c.DeathRate;
-                    cityTable.EmigrationRate = c.EmigrationRate;
-                    cityTable.ImmigrationRate = c.ImmigrationRate;
-                    cityTable.Latitude = c.Latitude;
-                    cityTable.Longitude = c.Longitude;
-                    cityTable.MaleRate = c.MaleRate;
-                    cityTable.FemaleRate = c.FemaleRate;
-                    cityTable.GrowthRate = c.GrowthRate;
-                    cityTable.PopulationNr = c.PopulationNr;
-                    context.PopulationTables.Add(cityTable);
-                    context.SaveChanges();
-                }
+                    foreach (var c in city.PopulationThroughYears)
+                    {
+                        var cityTable = new PopulationTable();
+                        cityTable.City = city.Name;
+                        cityTable.Year = c.Year;
+                        cityTable.Age0_17 = c.Age0_17;
+                        cityTable.Age18_34 = c.Age18_34;
+                        cityTable.Age35_54 = c.Age35_54;
+                        cityTable.Age55_Up = c.Age55_up;
+                        cityTable.AverageAge = c.AverageAge;
+                        cityTable.BirthRate = c.BirthRate;
+                        cityTable.DeathRate = c.DeathRate;
+                        cityTable.EmigrationRate = c.EmigrationRate;
+                        cityTable.ImmigrationRate = c.ImmigrationRate;
+                        cityTable.Latitude = c.Latitude;
+                        cityTable.Longitude = c.Longitude;
+                        cityTable.MaleRate = c.MaleRate;
+                        cityTable.FemaleRate = c.FemaleRate;
+                        cityTable.GrowthRate = c.GrowthRate;
+                        cityTable.PopulationNr = c.PopulationNr;
+                        context.PopulationTables.Add(cityTable);
+                        context.SaveChanges();
+                    }
+                }*/
             }
         }
 
@@ -295,6 +307,48 @@ namespace populat.io
             y /= 90;
             //"51.44164199999999, 5.469722499999989"         
             return new Location(location.Latitude + x, location.Longitude +y);
+        }
+
+        private void cb_cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<string> citiesList = new List<string>();
+            using (var context = new dbi359591Entities())
+            {
+                // Query for all blogs with names starting with B 
+                var dbcity = (from b in context.PopulationTables
+                              where b.City.Equals(((ComboBox)sender).SelectedItem.ToString())
+                              select b).ToList();
+
+                List<Population> tempList = new List<Population>();
+                foreach (var c in dbcity)
+                {
+                    Population temp = new Population();
+                    temp.Year = c.Year;
+                    temp.Age0_17 = c.Age0_17;
+                    temp.Age18_34 = c.Age18_34;
+                    temp.Age35_54 = c.Age35_54;
+                    temp.Age55_up = c.Age55_Up;
+                    temp.AverageAge = c.AverageAge;
+                    temp.BirthRate = c.BirthRate;
+                    temp.DeathRate = c.DeathRate;
+                    temp.EmigrationRate = c.EmigrationRate;
+                    temp.ImmigrationRate = c.ImmigrationRate;
+                    temp.Latitude = c.Latitude;
+                    temp.Longitude = c.Longitude;
+                    temp.MaleRate = c.MaleRate;
+                    temp.FemaleRate = c.FemaleRate;
+                    temp.GrowthRate = c.GrowthRate;
+                    temp.PopulationNr = c.PopulationNr;
+                    tempList.Add(temp);
+                }
+                city = new City(dbcity.First().City,tempList);
+            }
+            lblCityName.Content = city.Name;
+            location = new Location(city.PopulationThroughYears.Last().Latitude, city.PopulationThroughYears.Last().Longitude);
+            tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
+            tbDelay.Text = "2";
+            SetCharts();
+            PlotPopulation();
         }
     }
 }
