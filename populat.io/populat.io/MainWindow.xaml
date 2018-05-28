@@ -74,7 +74,7 @@
         </lvc:CartesianChart>
         <Button x:Name="SaveCity" Content="Save City" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="SaveCity_Click" Height="19"/>
         <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click" Height="19"/>
-        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="btnSimulate_Click"/>
+        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="BtnSimulate_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-474,13.8,0,0" VerticalAlignment="Top" Width="75" Height="19" Grid.Row="1"/>
         <Label x:Name="lblCityName" Content="Please load a city" HorizontalAlignment="Left" Margin="167,8,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbYear" HorizontalAlignment="Left" Height="18" Margin="394,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
@@ -89,6 +89,6 @@
         <CheckBox x:Name="cbBetterMedication" Content="Better Medication" HorizontalAlignment="Left" Margin="1033,9,-5.2,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="cbHigherImmigration" Content="Higher Immigration" HorizontalAlignment="Left" Margin="835,28,0,0" VerticalAlignment="Top" IsChecked="True" />
         <CheckBox x:Name="cbHigherIncome" Content="Higher income"  HorizontalAlignment="Left" Margin="964,29,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <ComboBox x:Name="cb_cities" HorizontalAlignment="Left" Margin="90,35,0,0" VerticalAlignment="Top" Width="72" Height="19" SelectionChanged="cb_cities_SelectionChanged"/>
+        <ComboBox x:Name="cb_cities" HorizontalAlignment="Left" Margin="90,32,0,0" VerticalAlignment="Top" Width="72" Height="22" SelectionChanged="Cb_cities_SelectionChanged"/>
     </Grid>
 </Window>

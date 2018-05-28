@@ -35,9 +35,7 @@ namespace populat.io
             InitializeComponent();
             WindowState = WindowState.Maximized;
             city = null;
-            NumberFormatInfo numberFormat = new NumberFormatInfo();
-            string CultureName = Thread.CurrentThread.CurrentCulture.Name;
-            CultureInfo ci = new CultureInfo(CultureName);
+            CultureInfo ci = new CultureInfo(Thread.CurrentThread.CurrentCulture.Name);
             if (ci.NumberFormat.NumberDecimalSeparator != ".")
             {
                 // Forcing use of decimal separator for numerical values
@@ -148,26 +146,29 @@ namespace populat.io
             }
         }
 
-        void addNewPolygon()
+        private void AddNewPolygon()
         {
-            MapPolygon polygon = new MapPolygon();
-            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
-            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-            polygon.StrokeThickness = 5;
-            polygon.Opacity = 0.4;
-            polygon.Locations = new LocationCollection() {
-                new Location(location.Latitude + 0.03, location.Longitude - 0.07),
-                new Location(location.Latitude + 0.05, location.Longitude - 0.05),
-                new Location(location.Latitude + 0.06, location.Longitude), //
-                new Location(location.Latitude + 0.05, location.Longitude + 0.05),
-                new Location(location.Latitude + 0.03, location.Longitude + 0.07),
-                new Location(location.Latitude, location.Longitude + 0.08), //
-                new Location(location.Latitude - 0.03, location.Longitude + 0.07),
-                new Location(location.Latitude - 0.05, location.Longitude + 0.05),
-                new Location(location.Latitude - 0.06, location.Longitude), //
-                new Location(location.Latitude - 0.05, location.Longitude - 0.05),
-                new Location(location.Latitude - 0.03, location.Longitude - 0.07),
-                new Location(location.Latitude, location.Longitude - 0.08)
+            MapPolygon polygon = new MapPolygon
+            {
+                Fill = new SolidColorBrush(Colors.White),
+                Stroke = new SolidColorBrush(Colors.Red),
+                StrokeThickness = 5,
+                Opacity = 0.4,
+                Locations = new LocationCollection()
+                {
+                    new Location(location.Latitude + 0.03, location.Longitude - 0.07),
+                    new Location(location.Latitude + 0.05, location.Longitude - 0.05),
+                    new Location(location.Latitude + 0.06, location.Longitude), //
+                    new Location(location.Latitude + 0.05, location.Longitude + 0.05),
+                    new Location(location.Latitude + 0.03, location.Longitude + 0.07),
+                    new Location(location.Latitude, location.Longitude + 0.08), //
+                    new Location(location.Latitude - 0.03, location.Longitude + 0.07),
+                    new Location(location.Latitude - 0.05, location.Longitude + 0.05),
+                    new Location(location.Latitude - 0.06, location.Longitude), //
+                    new Location(location.Latitude - 0.05, location.Longitude - 0.05),
+                    new Location(location.Latitude - 0.03, location.Longitude - 0.07),
+                    new Location(location.Latitude, location.Longitude - 0.08)
+                }
             };
             MapControl.Children.Add(polygon);
         }
@@ -180,7 +181,7 @@ namespace populat.io
             {           // divided by 10 means a pin every 10k people
                 MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
             }
-            addNewPolygon();
+            AddNewPolygon();
         }
 
         private void SetCharts()
@@ -270,7 +271,7 @@ namespace populat.io
             await Task.Delay((int)delay);
         }
 
-        private async void btnSimulate_Click(object sender, RoutedEventArgs e)
+        private async void BtnSimulate_Click(object sender, RoutedEventArgs e)
         {
             if (city != null)
             {
@@ -309,7 +310,7 @@ namespace populat.io
             return new Location(location.Latitude + x, location.Longitude +y);
         }
 
-        private void cb_cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Cb_cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<string> citiesList = new List<string>();
             using (var context = new dbi359591Entities())
@@ -322,24 +323,25 @@ namespace populat.io
                 List<Population> tempList = new List<Population>();
                 foreach (var c in dbcity)
                 {
-                    Population temp = new Population();
-                    temp.Year = c.Year;
-                    temp.Age0_17 = c.Age0_17;
-                    temp.Age18_34 = c.Age18_34;
-                    temp.Age35_54 = c.Age35_54;
-                    temp.Age55_up = c.Age55_Up;
-                    temp.AverageAge = c.AverageAge;
-                    temp.BirthRate = c.BirthRate;
-                    temp.DeathRate = c.DeathRate;
-                    temp.EmigrationRate = c.EmigrationRate;
-                    temp.ImmigrationRate = c.ImmigrationRate;
-                    temp.Latitude = c.Latitude;
-                    temp.Longitude = c.Longitude;
-                    temp.MaleRate = c.MaleRate;
-                    temp.FemaleRate = c.FemaleRate;
-                    temp.GrowthRate = c.GrowthRate;
-                    temp.PopulationNr = c.PopulationNr;
-                    tempList.Add(temp);
+                    tempList.Add(new Population()
+                    {
+                        Year = c.Year,
+                        Age0_17 = c.Age0_17,
+                        Age18_34 = c.Age18_34,
+                        Age35_54 = c.Age35_54,
+                        Age55_up = c.Age55_Up,
+                        AverageAge = c.AverageAge,
+                        BirthRate = c.BirthRate,
+                        DeathRate = c.DeathRate,
+                        EmigrationRate = c.EmigrationRate,
+                        ImmigrationRate = c.ImmigrationRate,
+                        Latitude = c.Latitude,
+                        Longitude = c.Longitude,
+                        MaleRate = c.MaleRate,
+                        FemaleRate = c.FemaleRate,
+                        GrowthRate = c.GrowthRate,
+                        PopulationNr = c.PopulationNr
+                    });
                 }
                 city = new City(dbcity.First().City,tempList);
             }
