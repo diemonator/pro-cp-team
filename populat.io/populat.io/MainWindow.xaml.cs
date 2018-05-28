@@ -148,27 +148,24 @@ namespace populat.io
 
         private void AddNewPolygon()
         {
-            MapPolygon polygon = new MapPolygon
-            {
-                Fill = new SolidColorBrush(Colors.White),
-                Stroke = new SolidColorBrush(Colors.Red),
-                StrokeThickness = 5,
-                Opacity = 0.4,
-                Locations = new LocationCollection()
-                {
-                    new Location(location.Latitude + 0.03, location.Longitude - 0.07),
-                    new Location(location.Latitude + 0.05, location.Longitude - 0.05),
-                    new Location(location.Latitude + 0.06, location.Longitude), //
-                    new Location(location.Latitude + 0.05, location.Longitude + 0.05),
-                    new Location(location.Latitude + 0.03, location.Longitude + 0.07),
-                    new Location(location.Latitude, location.Longitude + 0.08), //
-                    new Location(location.Latitude - 0.03, location.Longitude + 0.07),
-                    new Location(location.Latitude - 0.05, location.Longitude + 0.05),
-                    new Location(location.Latitude - 0.06, location.Longitude), //
-                    new Location(location.Latitude - 0.05, location.Longitude - 0.05),
-                    new Location(location.Latitude - 0.03, location.Longitude - 0.07),
-                    new Location(location.Latitude, location.Longitude - 0.08)
-                }
+            MapPolygon polygon = new MapPolygon();
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            polygon.StrokeThickness = 5;
+            polygon.Opacity = 0.4;
+            polygon.Locations = new LocationCollection() {
+                new Location(location.Latitude + 0.03, location.Longitude - 0.07),
+                new Location(location.Latitude + 0.05, location.Longitude - 0.05),
+                new Location(location.Latitude + 0.06, location.Longitude), //
+                new Location(location.Latitude + 0.05, location.Longitude + 0.05),
+                new Location(location.Latitude + 0.03, location.Longitude + 0.07),
+                new Location(location.Latitude, location.Longitude + 0.08), //
+                new Location(location.Latitude - 0.03, location.Longitude + 0.07),
+                new Location(location.Latitude - 0.05, location.Longitude + 0.05),
+                new Location(location.Latitude - 0.06, location.Longitude), //
+                new Location(location.Latitude - 0.05, location.Longitude - 0.05),
+                new Location(location.Latitude - 0.03, location.Longitude - 0.07),
+                new Location(location.Latitude, location.Longitude - 0.08)
             };
             MapControl.Children.Add(polygon);
         }
