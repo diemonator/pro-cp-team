@@ -41,19 +41,26 @@ namespace populat.io
             {
                 if (cb_year.SelectedItem.ToString() == data.Year.ToString())
                 {
-                    data.Age0_17 = double.Parse(tb_age0_17.Text);
-                    data.Age18_34 = double.Parse(tb_age18_34.Text);
-                    data.Age35_54 = double.Parse(tb_age35_54.Text);
-                    data.Age55_up = double.Parse(tb_age55_up.Text);
-                    data.AverageAge = double.Parse(tb_averageAge.Text);
-                    data.BirthRate = double.Parse(tb_birthRate.Text);
-                    data.DeathRate = double.Parse(tb_deathRate.Text);
-                    data.EmigrationRate = double.Parse(tb_emigration.Text);
-                    data.FemaleRate = double.Parse(tb_femaleRate.Text);
-                    data.GrowthRate = double.Parse(tb_growthRate.Text);
-                    data.ImmigrationRate = double.Parse(tb_immigration.Text);
-                    data.MaleRate = double.Parse(tb_maleRate.Text);
-                    data.PopulationNr = double.Parse(tb_populationNr.Text);
+                    try
+                    {
+                        data.Age0_17 = double.Parse(tb_age0_17.Text);
+                        data.Age18_34 = double.Parse(tb_age18_34.Text);
+                        data.Age35_54 = double.Parse(tb_age35_54.Text);
+                        data.Age55_up = double.Parse(tb_age55_up.Text);
+                        data.AverageAge = double.Parse(tb_averageAge.Text);
+                        data.BirthRate = double.Parse(tb_birthRate.Text);
+                        data.DeathRate = double.Parse(tb_deathRate.Text);
+                        data.EmigrationRate = double.Parse(tb_emigration.Text);
+                        data.FemaleRate = double.Parse(tb_femaleRate.Text);
+                        data.GrowthRate = double.Parse(tb_growthRate.Text);
+                        data.ImmigrationRate = double.Parse(tb_immigration.Text);
+                        data.MaleRate = double.Parse(tb_maleRate.Text);
+                        data.PopulationNr = double.Parse(tb_populationNr.Text);
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Incorrect format! Please, enter the values correctly","Warrning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                 }
             }
         }

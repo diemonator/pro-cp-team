@@ -67,6 +67,7 @@ namespace populat.io
             List<string> citiesList = new List<string>();
             using (var context = new dbi359591Entities())
             {
+                // Querry for all city names
                 var cities = (from b in context.PopulationTables
                               select b.City).Distinct();
                 citiesList = cities.ToList();
@@ -308,10 +309,10 @@ namespace populat.io
             List<string> citiesList = new List<string>();
             using (var context = new dbi359591Entities())
             {
-                // Query for all blogs with names starting with B 
-                var dbcity = (from b in context.PopulationTables
-                              where b.City.Equals(((ComboBox)sender).SelectedItem.ToString())
-                              select b).ToList();
+                // Query for city
+                var dbcity = (from city in context.PopulationTables
+                              where city.City.Equals(((ComboBox)sender).SelectedItem.ToString())
+                              select city).ToList();
 
                 List<Population> tempList = new List<Population>();
                 foreach (var c in dbcity)
@@ -414,14 +415,14 @@ namespace populat.io
             {
                 child = new ParameterWindow(city);
                 child.ParametersUpdated += CityOnRecive;
-                //child.DataContext
                 child.Show();
             }
             else
             {
-                MessageBox.Show("You must load a city first, either from the database or csv file", "Warrning",MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must load a city first, either from the database or from a csv file", "Warrning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
         internal void CityOnRecive(City city)
         {
             this.city = city;
