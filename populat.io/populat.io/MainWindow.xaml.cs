@@ -47,6 +47,7 @@ namespace populat.io
             PointLabel = chartPoint => string.Format("{0:P}", chartPoint.Participation);
             Labels = new List<string> { "2017", "2018", "2019", "2020", "2021" };
             ChartPopulationCount.Series[0].Values = new ChartValues<double> { 120000, 110000, 115000, 130000, 135000 };
+            ChartPopulationCount.AxisY[0].MinValue = 0;
             LabelsColumns = new List<string> { "Birth", "Death", "Emigration", "Immigration" };
             // sample data
             SeriesCollection = new SeriesCollection
