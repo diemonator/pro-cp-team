@@ -25,7 +25,6 @@ namespace populat.io
             Population baseYear = PopulationThroughYears[index1];
 
             PopulationRate = (baseYear.PopulationNr * 100 / preBaseYear.PopulationNr) / 100;
-
         }
 
         public List<string> Simulate(int year, EventHelper eh)

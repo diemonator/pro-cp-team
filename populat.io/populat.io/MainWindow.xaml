@@ -7,7 +7,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="826.628" Width="1150.082">
+        Title="MainWindow" Height="922.628" Width="1363.082">
     <Grid Margin="0,0,0.2,0" Height="667" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="471*"/>
@@ -90,5 +90,6 @@
         <CheckBox x:Name="cbHigherImmigration" Content="Higher Immigration" HorizontalAlignment="Left" Margin="835,28,0,0" VerticalAlignment="Top" IsChecked="True" />
         <CheckBox x:Name="cbHigherIncome" Content="Higher income"  HorizontalAlignment="Left" Margin="964,29,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <ComboBox x:Name="cb_cities" HorizontalAlignment="Left" Margin="90,32,0,0" VerticalAlignment="Top" Width="72" Height="22" SelectionChanged="Cb_cities_SelectionChanged"/>
+        <Button Content="Custom Parameters" HorizontalAlignment="Left" Margin="1174,10,0,0" VerticalAlignment="Top" Width="122" Click="Button_Click"/>
     </Grid>
 </Window>

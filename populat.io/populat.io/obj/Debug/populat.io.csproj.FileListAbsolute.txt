@@ -173,4 +173,5 @@ D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.dll
 D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.dll
 D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.xml
 D:\Repositories\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.xml
-D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
+D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.g.cs
+D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml

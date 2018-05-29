@@ -27,14 +27,15 @@ namespace populat.io
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ParameterWindow child;
         private City city;
         private Random rnd;
         private Location location;
+
         public MainWindow()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            city = null;
             CultureInfo ci = new CultureInfo(Thread.CurrentThread.CurrentCulture.Name);
             if (ci.NumberFormat.NumberDecimalSeparator != ".")
             {
@@ -405,6 +406,31 @@ namespace populat.io
                 }
             });
             lblCurrentYear.Content = "Current year of the simulation: " + city.PopulationThroughYears.Last().Year;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (city != null)
+            {
+                child = new ParameterWindow(city);
+                child.ParametersUpdated += CityOnRecive;
+                //child.DataContext
+                child.Show();
+            }
+            else
+            {
+                MessageBox.Show("You must load a city first, either from the database or csv file", "Warrning",MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+        internal void CityOnRecive(City city)
+        {
+            this.city = city;
+            lblCityName.Content = city.Name;
+            location = new Location(city.PopulationThroughYears.Last().Latitude, city.PopulationThroughYears.Last().Longitude);
+            tbYear.Text = city.PopulationThroughYears.Last().Year.ToString();
+            tbDelay.Text = "2";
+            DatabaseLoadCharts();
+            PlotPopulation();
         }
     }
 }
