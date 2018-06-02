@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\
 populat.io
 none
 false
 DEBUG;TRACE
-D:\Repositories\populat.io\populat.io\populat.io\App.xaml
-2751705929
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\App.xaml
+31091260001
 2918944992
-19-151557682
-22-1615239476
-MainWindow.xaml;ParameterWindow.xaml;
+20-1264788014
+22-1396688773
+MainWindow.xaml;Map.xaml;ParameterWindow.xaml;
 
-True
+False
 

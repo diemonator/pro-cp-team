@@ -19,12 +19,16 @@ namespace populat.io
             PopulationThroughYears = data;
             LastRecord = PopulationThroughYears.Count();
 
-            int index1 = LastRecord - 1;
-            int index2 = LastRecord - 2;
-            Population preBaseYear = PopulationThroughYears[index2];
-            Population baseYear = PopulationThroughYears[index1];
 
-            PopulationRate = (baseYear.PopulationNr * 100 / preBaseYear.PopulationNr) / 100;
+            if (LastRecord > 1)
+            {
+                int index1 = LastRecord - 1;
+                int index2 = LastRecord - 2;
+                Population preBaseYear = PopulationThroughYears[index2];
+                Population baseYear = PopulationThroughYears[index1];
+
+                PopulationRate = (baseYear.PopulationNr * 100 / preBaseYear.PopulationNr) / 100;
+            }
         }
 
         public List<string> Simulate(int year, EventHelper eh)
@@ -67,6 +71,8 @@ namespace populat.io
                 Age35_54 = lastYear.Age35_54 * GetRandomNumber(),
                 Age55_up = lastYear.Age55_up * GetRandomNumber()
             };
+            p.Latitude = lastYear.Latitude;
+            p.Longitude = lastYear.Longitude;
             //moved growth rate out of the initialization since it needs this years population and lasts to calculate the difference
             p.GrowthRate = 100 * p.PopulationNr / lastYear.PopulationNr;          
             PopulationThroughYears.Add(p);

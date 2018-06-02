@@ -182,3 +182,12 @@ C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\E
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.g.cs
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.dll
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.xml
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.g.cs
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\Map.g.cs
+C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\Map.baml
