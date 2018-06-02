@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:populat.io"
         mc:Ignorable="d"
-        Title="ParameterWindow" Height="695.197" Width="644.947">
-    <Border Padding="100 15 100 0">
+        Title="ParameterWindow" SizeToContent="WidthAndHeight">
+    <Border Padding="80 15 80 15">
         <StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
