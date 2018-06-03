@@ -8,60 +8,54 @@ namespace populat.io
 {
     class EventHelper
     {
-        private bool allowDisease;
-        private bool allowWeather;
-        private bool allowWar;
-        private bool allowHigherImmigration;
-        private bool allowBetterMedication;
-        private bool allowHigherAverageIncome;
+        private int chanceDisease;
+        private int chanceWeather;
+        private int chanceWar;
+        private int chanceHigherImmigration;
+        private int chanceBetterMedication;
+        private int chanceHigherAverageIncome;
 
-        public EventHelper(bool allowDisease, bool allowWeather, bool allowWar, bool allowHigherImmigration, 
-            bool allowBetterMedication, bool allowHigherAverageIncome)
+        public EventHelper(int chanceDisease, int chanceWeather, int chanceWar, int chanceHigherImmigration,
+            int chanceBetterMedication, int chanceHigherAverageIncome)
         {
-            this.allowDisease = allowDisease;
-            this.allowWeather = allowWeather;
-            this.allowWar = allowWar;
-            this.allowHigherImmigration = allowHigherImmigration;
-            this.allowBetterMedication = allowBetterMedication;
-            this.allowHigherAverageIncome = allowHigherAverageIncome;
+            this.chanceDisease = chanceDisease;
+            this.chanceWeather = chanceWeather;
+            this.chanceWar = chanceWar;
+            this.chanceHigherImmigration = chanceHigherImmigration;
+            this.chanceBetterMedication = chanceBetterMedication;
+            this.chanceHigherAverageIncome = chanceHigherAverageIncome;
         }
 
         public List<string> SimulateEvents(Population p)
         {
             List<string> outcomes = new List<string>();
             int chance = StaticRandom.Instance.Next(1, 101);
-            // 10% for disease to occur
-            if (allowDisease && chance < 10)
+            if (chance < chanceDisease)
             {
                 outcomes.Add(SimulateDisease(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            // 20% for weather event to occur
-            if (allowWeather && chance < 20)
+            if (chance < chanceWeather)
             {
                 outcomes.Add(SimulateWeather(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            // 5% for war to occur
-            if (allowWar && chance < 5)
+            if (chance < chanceWar)
             {
                 outcomes.Add(SimulateWar(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            // 10% for increase in immigation
-            if (allowHigherImmigration && chance < 10)
+            if (chance < chanceHigherImmigration)
             {
                 outcomes.Add(SimulateHigherImmigration(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            // 15% for medication to improve
-            if (allowBetterMedication && chance < 15)
+            if (chance < chanceBetterMedication)
             {
                 outcomes.Add(SimulateBetterMedication(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            // 10% for income to increase
-            if (allowBetterMedication && chance < 10)
+            if ( chance < chanceHigherAverageIncome)
             {
                 outcomes.Add(SimulateHigherAverageIncome(p));
             }

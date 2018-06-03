@@ -183,3 +183,10 @@ C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\P
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.dll
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.xml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.g.cs
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml

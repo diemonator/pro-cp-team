@@ -12,16 +12,16 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*" MinHeight="380"/>
+                <RowDefinition Height="*" MinHeight="390"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-
+                <ColumnDefinition Width="411*"/>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="314*"/>
             </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.ColumnSpan="2" Margin="0,0,411,390" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -37,23 +37,6 @@
                 <Button Margin="5 5 0 0" Padding="5" Grid.Column="1" x:Name="LoadCity" Content="Load City" Click="LoadCity_Click"/>
                 <ComboBox VerticalContentAlignment="Center" Margin="0 5 0 5" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities" SelectionChanged="Cb_cities_SelectionChanged"/>
                 <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5" Grid.Column="2" Grid.RowSpan="2" x:Name="lblCityName" Content="Please load a city" FontSize="18"/>
-                <Grid Margin="5" Grid.Column="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" />
-                    <CheckBox Margin="0 0 5 0" Grid.Column="1" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" />
-                    <CheckBox Margin="0 0 5 0" Grid.Column="1" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True" />
-                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True"/>
-                </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -62,17 +45,42 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Margin="5" Content="Year"/>
-                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" Width="120" />
+                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" Width="75" PreviewTextInput="tb_AllowInteger" />
                     <Label Grid.Column="2" Margin="5" x:Name="lblDelay" Content="Delay" />
-                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" />
+                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" Width="75" PreviewTextInput="tb_AllowInteger" />
 
                 </Grid>
                 <Button Margin="5 5 0 5" Padding="5" Grid.Column="8" Content="Custom Parameters" Click="Button_Click" />
                 <Button Margin="5 5 0 5" Padding="5" Grid.Column="8" Grid.Row="1" x:Name="btnSimulate" Content="Simulate" Click="BtnSimulate_Click"/>
             </Grid>
-            <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" />
-            <Label Grid.Column="2" x:Name ="lblCurrentYear" Content="Current year of the simulation: " VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Grid Grid.Row="1" Grid.Column="2">
+            <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,0.2,390" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0*" />
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="135*"/>
+                    <ColumnDefinition Width="155*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Margin="0,0,2,36.6" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+                <TextBox x:Name="tbDiseases" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Height="18" Margin="34.2,0,0,0" Text="10" VerticalAlignment="Top" Width="30"/>
+                <CheckBox Margin="0,0.2,2,-0.4" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" Grid.ColumnSpan="3" />
+                <TextBox x:Name="tbWeather" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Height="18" Margin="34.2,0.2,0,0" Text="20" VerticalAlignment="Top" Width="30"/>
+                <CheckBox Margin="1,0,0.6,36.6" Grid.Column="3" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" Grid.RowSpan="2" />
+                <TextBox x:Name="tbWar" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" Height="18" Margin="110,0,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="30"/>
+                <CheckBox Margin="1,0.2,0.6,-0.4" Grid.Column="3" Grid.Row="1" x:Name="cbBetterMedication" Content="Imp. Medication" IsChecked="True"/>
+                <TextBox x:Name="tbMedication" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Height="18" Margin="110,0.2,0,0" Text="15" VerticalAlignment="Top" Width="30"/>
+                <CheckBox Margin="0.4,0,0.2,36.6" Grid.Column="4" Grid.Row="0" x:Name="cbHigherImmigration" Content="Hgher Immigration" IsChecked="True" Grid.RowSpan="2" />
+                <TextBox x:Name="tbImmigration" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" Height="18" Margin="125.4,0,0,0" Text="10" VerticalAlignment="Top" Width="30"/>
+                <CheckBox Margin="0.4,0.2,0.2,-0.4" Grid.Column="4" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True"/>
+                <TextBox x:Name="tbIncome" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" Height="18" Margin="125.4,0,0,0" Text="10" VerticalAlignment="Top" Width="30"/>
+            </Grid>
+            <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,0.4,0,0.2" />
+            <Label x:Name ="lblCurrentYear" Content="Current year of the simulation: " VerticalAlignment="Center" HorizontalAlignment="Center" Margin="300,5,186.8,42.6"/>
+            <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0.4,0.2,0.2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition/>
@@ -122,7 +130,7 @@
                     </lvc:PieChart.DataTooltip>
                 </lvc:PieChart>
             </Grid>
-            <Grid Margin="0 15 0 0" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid Margin="0,14.8,0,-0.2" Grid.Row="2" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -150,7 +158,7 @@
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
-            <ListBox Grid.Row="2" Grid.Column="2" x:Name="lbEventLog" />
+            <ListBox Grid.Row="1" Grid.Column="2" x:Name="lbEventLog" Grid.ColumnSpan="2" Margin="0,393.4,0.2,-0.2" Grid.RowSpan="2" />
         </Grid>
     </Border>
 </Window>
