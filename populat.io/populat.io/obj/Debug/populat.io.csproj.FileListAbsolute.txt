@@ -191,3 +191,6 @@ C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\populat.i
 C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml
 C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\Map.g.cs
 C:\Users\357989\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\Map.baml
+D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\Map.g.cs
+D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
+D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\Map.baml

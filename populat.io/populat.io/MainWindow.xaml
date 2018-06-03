@@ -7,89 +7,150 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="922.628" Width="1363.082">
-    <Grid Margin="0,0,0.2,0" Height="667" VerticalAlignment="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="471*"/>
-            <RowDefinition Height="192*"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
-        <lvc:PieChart x:Name="ChartGender" LegendLocation="Right" Hoverable="True" Margin="636,161,25,0" Height="102" VerticalAlignment="Top" MaxWidth="500">
-            <lvc:PieChart.Series>
-                <lvc:PieSeries Title="Male" Values="1" DataLabels="True"
+        Title="MainWindow" Width="1500" Height="900">
+    <Border Margin="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" MinHeight="450"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="0 5 0 0" Padding="5" x:Name="SaveCity" Content="Save City" Click="SaveCity_Click"/>
+                <Button Margin="5 5 0 0" Padding="5" Grid.Column="1" x:Name="LoadCity" Content="Load City" Click="LoadCity_Click"/>
+                <ComboBox VerticalContentAlignment="Center" Margin="0 5 0 5" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities" SelectionChanged="Cb_cities_SelectionChanged"/>
+                <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5" Grid.Column="2" Grid.RowSpan="2" x:Name="lblCityName" Content="Please load a city" FontSize="18"/>
+                <Grid Margin="5" Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" />
+                    <CheckBox Margin="0 0 5 0" Grid.Column="1" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" />
+                    <CheckBox Margin="0 0 5 0" Grid.Column="1" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True" />
+                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True"/>
+                </Grid>
+                <Grid Grid.Column="3" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="5" Content="Year"/>
+                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" Width="120" />
+                    <Label Grid.Column="2" Margin="5" x:Name="lblDelay" Content="Delay" />
+                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" />
+
+                </Grid>
+                <Button Margin="5 5 0 5" Padding="5" Grid.Column="8" Content="Create/Edit City" Click="Button_Click" />
+                <Button Margin="5 5 0 5" Padding="5" Grid.Column="8" Grid.Row="1" x:Name="btnSimulate" Content="Simulate" Click="BtnSimulate_Click"/>
+            </Grid>
+            <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" />
+            <Label Grid.Column="2" x:Name ="lblCurrentYear" Content="Current year of the simulation: " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="215"/>
+                </Grid.ColumnDefinitions>
+
+                <lvc:PieChart Grid.Row="0" x:Name="ChartGender" LegendLocation="Bottom" Hoverable="True" Grid.ColumnSpan="3">
+                    <lvc:PieChart.Series>
+                        <lvc:PieSeries Title="Male" Values="1" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Female" Values="2" DataLabels="True" 
+                        <lvc:PieSeries Title="Female" Values="2" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
-            </lvc:PieChart.Series>
-            <lvc:PieChart.DataTooltip>
-                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
-            </lvc:PieChart.DataTooltip>
-        </lvc:PieChart>
-        <lvc:PieChart x:Name="ChartAges" LegendLocation="Right" Hoverable="True" Margin="636,267,25,0" Height="101" VerticalAlignment="Top" MaxWidth="500">
-            <lvc:PieChart.Series>
-                <lvc:PieSeries Title="0-17" Values="3" DataLabels="True"
+                    </lvc:PieChart.Series>
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+                    </lvc:PieChart.DataTooltip>
+                </lvc:PieChart>
+
+                <lvc:PieChart Grid.Row="1" x:Name="ChartAges" LegendLocation="Bottom" Hoverable="True" Margin="-1,0,1,0">
+                    <lvc:PieChart.Series>
+                        <lvc:PieSeries Title="0-17" Values="3" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="18-34" Values="4" DataLabels="True" 
+                        <lvc:PieSeries Title="18-34" Values="4" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="35-54" Values="5" DataLabels="True" 
+                        <lvc:PieSeries Title="35-54" Values="5" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="55+" Values="6" DataLabels="True" 
+                        <lvc:PieSeries Title="55+" Values="6" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
-            </lvc:PieChart.Series>
-            <lvc:PieChart.DataTooltip>
-                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
-            </lvc:PieChart.DataTooltip>
-        </lvc:PieChart>
-        <lvc:PieChart x:Name="ChartBirthDeath" LegendLocation="Right" Hoverable="True" Margin="651,368,10,0" Height="103" VerticalAlignment="Top" MaxWidth="500">
-            <lvc:PieChart.Series>
-                <lvc:PieSeries Title="Death Rate" Values="11" DataLabels="True"
+                    </lvc:PieChart.Series>
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+                    </lvc:PieChart.DataTooltip>
+                </lvc:PieChart>
+
+                <lvc:PieChart Grid.Row="2" x:Name="ChartBirthDeath" LegendLocation="Bottom" Hoverable="True" Grid.ColumnSpan="3">
+                    <lvc:PieChart.Series>
+                        <lvc:PieSeries Title="Death Rate" Values="11" DataLabels="True"
                     LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Birth Rate" Values="10" DataLabels="True" 
+                        <lvc:PieSeries Title="Birth Rate" Values="10" DataLabels="True" 
                     LabelPoint="{Binding PointLabel}"/>
-            </lvc:PieChart.Series>
-            <lvc:PieChart.DataTooltip>
-                <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
-            </lvc:PieChart.DataTooltip>
-        </lvc:PieChart>
-        <m:Map Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center = "51.44164199999999, 5.469722499999989" ZoomLevel="12" Margin="0,66,506,0" Height="405" VerticalAlignment="Top" MaxWidth="800">
-        </m:Map>
-        <lvc:CartesianChart Name="ChartPopulationCount" LegendLocation="Right" Margin="3,4.8,554,-119.8" MaxWidth="500" Grid.Row="1" Grid.RowSpan="2">
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Count" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Year" Labels="{Binding Labels}" ></lvc:Axis>
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.Series>
-                <lvc:LineSeries Title="Population Count in 1000's" Values="5" DataLabels="True"/>
-            </lvc:CartesianChart.Series>
-        </lvc:CartesianChart>
-        <lvc:CartesianChart x:Name="ChartComparison" Series="{Binding SeriesCollection}" LegendLocation="Left" Margin="590,73.8,0,-119.8" MaxWidth="600" RenderTransformOrigin="0.483,0.772" Grid.Row="1" Grid.RowSpan="2">
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Years" Labels="{Binding LabelsColumns}"></lvc:Axis>
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Count" LabelFormatter="{Binding Formatter}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
-        <Button x:Name="SaveCity" Content="Save City" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="75" Click="SaveCity_Click" Height="19"/>
-        <Button x:Name="LoadCity" Content="Load City" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadCity_Click" Height="19"/>
-        <Button x:Name="btnSimulate" Content="Simulate" HorizontalAlignment="Left" Margin="484,10,0,0" VerticalAlignment="Top" Width="149" Height="43" Click="BtnSimulate_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="-474,13.8,0,0" VerticalAlignment="Top" Width="75" Height="19" Grid.Row="1"/>
-        <Label x:Name="lblCityName" Content="Please load a city" HorizontalAlignment="Left" Margin="167,8,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbYear" HorizontalAlignment="Left" Height="18" Margin="394,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
-        <Label Content="Year" HorizontalAlignment="Left" Margin="359,3,0,0" VerticalAlignment="Top" Height="25" Width="33" RenderTransformOrigin="1.175,0.448"/>
-        <TextBox x:Name="tbDelay" HorizontalAlignment="Left" Height="18" Margin="394,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85"/>
-        <Label x:Name="lblDelay" Content="Delay" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="1.175,0.448"/>
-        <Label x:Name ="lblCurrentYear" Content="Current year of the simulation: " HorizontalAlignment="Left" Margin="633,11,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbDisease" Content="Diseases" HorizontalAlignment="Left" Margin="835,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="cbWeather" Content="Weather" HorizontalAlignment="Left" Margin="911,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="cbWar" Content="War" HorizontalAlignment="Left" Margin="987,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <ListBox x:Name="lbEventLog" HorizontalAlignment="Center"  Height="108" Margin="835,48,79.6,0" VerticalAlignment="Top" Width="442"/>
-        <CheckBox x:Name="cbBetterMedication" Content="Better Medication" HorizontalAlignment="Left" Margin="1033,9,-5.2,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="cbHigherImmigration" Content="Higher Immigration" HorizontalAlignment="Left" Margin="835,28,0,0" VerticalAlignment="Top" IsChecked="True" />
-        <CheckBox x:Name="cbHigherIncome" Content="Higher income"  HorizontalAlignment="Left" Margin="964,29,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <ComboBox x:Name="cb_cities" HorizontalAlignment="Left" Margin="90,32,0,0" VerticalAlignment="Top" Width="72" Height="22" SelectionChanged="Cb_cities_SelectionChanged"/>
-        <Button Content="Create or edit city" HorizontalAlignment="Left" Margin="1159,10,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click"/>
-    </Grid>
+                    </lvc:PieChart.Series>
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip SelectionMode="SharedYInSeries" />
+                    </lvc:PieChart.DataTooltip>
+                </lvc:PieChart>
+            </Grid>
+            <Grid Margin="0 15 0 0" Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MinHeight="140"/>
+                </Grid.RowDefinitions>
+                <lvc:CartesianChart Grid.Column="0" Name="ChartPopulationCount" LegendLocation="Top" Margin="0,0,0,10" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Count" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Year" Labels="{Binding Labels}" ></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="Population Count in 1000's" Values="5" DataLabels="True"/>
+                    </lvc:CartesianChart.Series>
+                </lvc:CartesianChart>
+                <lvc:CartesianChart Grid.Column="1" x:Name="ChartComparison" Series="{Binding SeriesCollection}" LegendLocation="Right" MaxWidth="600" Margin="0,0,0,10">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Years" Labels="{Binding LabelsColumns}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Count" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Grid>
+            <ListBox Grid.Row="2" Grid.Column="2" x:Name="lbEventLog" />
+        </Grid>
+    </Border>
 </Window>
