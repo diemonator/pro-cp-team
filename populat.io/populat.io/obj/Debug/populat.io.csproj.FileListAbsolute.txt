@@ -87,7 +87,6 @@ C:\Users\Joe\Desktop\populat.io-CSVNugetPlugin-490070f4fc5134fa7600bc24ee80c4282
 C:\Users\Joe\Desktop\populat.io-CSVNugetPlugin-490070f4fc5134fa7600bc24ee80c42820b1e88b\populat.io\populat.io\obj\Debug\populat.io.csproj.GenerateResource.Cache
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
-C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_MarkupCompile.lref
 C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.dll
 C:\Users\user\Documents\populat.io\populat.io\populat.io\bin\Debug\CsvHelper.xml
@@ -194,3 +193,12 @@ D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.exe
 D:\Repositories\populat.io\populat.io\populat.io\obj\Debug\populat.io.pdb
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\Map.g.cs
 C:\Users\VasilSirakovPC\Desktop\Git\populat.io\populat.io\populat.io\obj\Debug\Map.baml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.dll
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.xml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\Map.g.cs
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.g.cs
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\Map.baml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml

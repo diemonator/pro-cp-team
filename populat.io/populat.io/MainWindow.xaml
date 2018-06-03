@@ -36,7 +36,8 @@
                 <Button Margin="0 10 0 10" Padding="5" x:Name="SaveCity" Content="Save City" Click="SaveCity_Click"/>
                 <Button Margin="5 10 0 10" Padding="5" Grid.Column="1" x:Name="LoadCity" Content="Load City" Click="LoadCity_Click"/>
                 <ComboBox VerticalContentAlignment="Center" Margin="0 5 0 5" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities" SelectionChanged="Cb_cities_SelectionChanged"/>
-                <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5" Grid.Column="2" Grid.RowSpan="2" x:Name="lblCityName" Content="Please load a city" FontSize="18"/>
+                <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5" Grid.Column="2" Grid.RowSpan="2"
+                       x:Name="lblCityName" Content="Please load a city" FontSize="18"/>
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="3">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -51,17 +52,23 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True" VerticalAlignment="Center"/>
-                    <TextBox x:Name="tbDiseases" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Height="18" Text="10" VerticalAlignment="Center" Width="30"/>
+                    <TextBox x:Name="tbDiseases" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Height="18" Text="10" VerticalAlignment="Center" Width="30"
+                             PreviewTextInput="Tb_AllowInteger"/>
                     <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" VerticalAlignment="Center"/>
-                    <TextBox x:Name="tbWeather" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="18" Text="20" VerticalAlignment="Center" Width="30"/>
+                    <TextBox x:Name="tbWeather" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="18" Text="20" VerticalAlignment="Center" Width="30"
+                             PreviewTextInput="Tb_AllowInteger"/>
                     <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" VerticalAlignment="Center"/>
-                    <TextBox x:Name="tbWar" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" Height="18" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="30"/>
+                    <TextBox x:Name="tbWar" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" Height="18" TextWrapping="Wrap" Text="5" VerticalAlignment="Top"
+                             Width="30" PreviewTextInput="Tb_AllowInteger"/>
                     <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True" VerticalAlignment="Center"/>
-                    <TextBox x:Name="tbMedication" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Height="18" Text="15" VerticalAlignment="Center" Width="30"/>
+                    <TextBox x:Name="tbMedication" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Height="18" Text="15" VerticalAlignment="Center" Width="30"
+                             PreviewTextInput="Tb_AllowInteger"/>
                     <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True" VerticalAlignment="Center"/>
-                    <TextBox x:Name="tbImmigration" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Center" Height="18" Text="10" VerticalAlignment="Center" Width="30"/>
+                    <TextBox x:Name="tbImmigration" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Center" Height="18" Text="10" VerticalAlignment="Center" Width="30"
+                             PreviewTextInput="Tb_AllowInteger"/>
                     <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True" VerticalAlignment="Center"/>
-                    <TextBox x:Name="tbIncome" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" Height="18" Text="10" VerticalAlignment="Center" Width="30"/>
+                    <TextBox x:Name="tbIncome" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" Height="18" Text="10" VerticalAlignment="Center" Width="30"
+                             PreviewTextInput="Tb_AllowInteger"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -79,7 +86,8 @@
                 <Button Margin="5 10 5 10" Padding="5" Grid.Column="8" Content="Create/Edit City" Click="Button_Click" />
                 <Button Margin="5" Padding="5" Grid.Column="8" Grid.Row="1" x:Name="btnSimulate" Content="Simulate" Click="BtnSimulate_Click"/>
             </Grid>
-            <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l" Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" />
+            <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l"
+                   Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" />
             <Label Grid.Column="2" x:Name ="lblCurrentYear" Content="Current year of the simulation: " VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Grid Grid.Row="1" Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -160,6 +168,24 @@
                 </lvc:CartesianChart>
             </Grid>
             <ListBox Margin="0 15 0 0" Grid.Row="2" Grid.Column="2" x:Name="lbEventLog" />
+            <GroupBox Grid.Column="1" Header="Schedule events" HorizontalAlignment="Left" Height="64" Margin="9.8,10,0,0" VerticalAlignment="Top" Width="330">
+                <Grid>
+                    <ComboBox x:Name="cbEvent" HorizontalAlignment="Left" Margin="0,11,0,0" VerticalAlignment="Top" Width="114" Height="22">
+                        <ComboBoxItem>Disease</ComboBoxItem>
+                        <ComboBoxItem>Weather</ComboBoxItem>
+                        <ComboBoxItem>War</ComboBoxItem>
+                        <ComboBoxItem>Better medication</ComboBoxItem>
+                        <ComboBoxItem>Higher immigration</ComboBoxItem>
+                        <ComboBoxItem>Higher income</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox x:Name="tbYearEvent" HorizontalAlignment="Left" Height="22" Margin="155,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"
+                             PreviewTextInput="Tb_AllowInteger"/>
+                    <Label Content="Year
+                           " HorizontalAlignment="Left" Margin="119,9,0,0" VerticalAlignment="Top" Width="36" Height="27"/>
+                    <Button x:Name="btnAddEvent" Content="Add event" HorizontalAlignment="Left" Margin="232,11,0,0" VerticalAlignment="Top" Width="76" Height="22"
+                            Click="BtnAddEvent_Click"/>
+                </Grid>
+            </GroupBox>
         </Grid>
     </Border>
 </Window>

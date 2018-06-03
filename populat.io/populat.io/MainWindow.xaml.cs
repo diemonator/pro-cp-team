@@ -1,25 +1,19 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using Microsoft.Maps.MapControl.WPF;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using LiveCharts;
-using LiveCharts.Wpf;
-using Microsoft.Maps.MapControl.WPF;
-using Microsoft.Win32;
 
 namespace populat.io
 {
@@ -32,6 +26,7 @@ namespace populat.io
         private City city;
         private Random rnd;
         private Location location;
+        private List<KeyValuePair<int, string>> scheduledEvents;
 
         public MainWindow()
         {
@@ -78,6 +73,9 @@ namespace populat.io
             {
                 cb_cities.Items.Add(city);
             }
+            cbEvent.Items.Insert(0, "--Select event--");
+            cbEvent.SelectedIndex = 0;
+            scheduledEvents = new List<KeyValuePair<int, string>>();
         }
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -120,6 +118,9 @@ namespace populat.io
                 tbDelay.Text = "2";
                 SetCharts();
                 PlotPopulation();
+                scheduledEvents = new List<KeyValuePair<int, string>>();
+                lbEventLog.Items.Clear();
+                tbYearEvent.Text = (city.PopulationThroughYears.Last().Year + 1).ToString();
                 //Adding the cities
                 /*using (var context = new dbi359591Entities())
                 {
@@ -278,7 +279,7 @@ namespace populat.io
 
         private async void BtnSimulate_Click(object sender, RoutedEventArgs e)
         {
-            if (city != null)
+            if (city != null && tbYear.Text != "")
             {
                 // Clear previous simulated data
                 city.PopulationThroughYears.RemoveRange(city.LastRecord, city.PopulationThroughYears.Count() - city.LastRecord);
@@ -295,6 +296,7 @@ namespace populat.io
                     await DelaySim();
                 }
                 PlotPopulation();
+                scheduledEvents = new List<KeyValuePair<int, string>>();
             }
             else
             {
@@ -457,7 +459,16 @@ namespace populat.io
             int immigration = (bool)cbHigherImmigration.IsChecked ? Convert.ToInt32(tbImmigration.Text) : 0;
             int medication = (bool)cbBetterMedication.IsChecked ? Convert.ToInt32(tbMedication.Text) : 0;
             int income = (bool)cbHigherIncome.IsChecked ? Convert.ToInt32(tbIncome.Text) : 0;
-            return new EventHelper(disease, weather, war, immigration, medication, income);
+            return new EventHelper(disease, weather, war, immigration, medication, income, scheduledEvents);
+        }
+
+        private void BtnAddEvent_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbEvent.SelectedIndex != 0 && tbYearEvent.Text != "")
+            {
+                scheduledEvents.Add(new KeyValuePair<int, string>(Convert.ToInt32(tbYearEvent.Text), cbEvent.Text));
+                lbEventLog.Items.Add("Event " + cbEvent.Text + " scheduled for year " + Convert.ToInt32(tbYearEvent.Text));
+            }           
         }
     }
 }

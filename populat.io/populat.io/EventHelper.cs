@@ -14,10 +14,11 @@ namespace populat.io
         private int chanceHigherImmigration;
         private int chanceBetterMedication;
         private int chanceHigherAverageIncome;
+        private List<KeyValuePair<int, string>> scheduledEvents;
 
 
         public EventHelper(int chanceDisease, int chanceWeather, int chanceWar, int chanceHigherImmigration,
-            int chanceBetterMedication, int chanceHigherAverageIncome)
+            int chanceBetterMedication, int chanceHigherAverageIncome, List<KeyValuePair<int, string>> scheduledEvents)
         {
             this.chanceDisease = chanceDisease;
             this.chanceWeather = chanceWeather;
@@ -25,39 +26,48 @@ namespace populat.io
             this.chanceHigherImmigration = chanceHigherImmigration;
             this.chanceBetterMedication = chanceBetterMedication;
             this.chanceHigherAverageIncome = chanceHigherAverageIncome;
+            this.scheduledEvents = scheduledEvents;
         }
 
 
         public List<string> SimulateEvents(Population p)
         {
+            List<string> scheduledCurrentYear = new List<string>();
+            foreach (KeyValuePair<int, string> k in scheduledEvents)
+            {
+                if (k.Key == p.Year)
+                {
+                    scheduledCurrentYear.Add(k.Value);
+                }
+            }
             List<string> outcomes = new List<string>();
             int chance = StaticRandom.Instance.Next(1, 101);
-            if (chance < chanceDisease)
+            if (chance < chanceDisease || scheduledCurrentYear.Contains("Disease"))
             {
                 outcomes.Add(SimulateDisease(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            if (chance < chanceWeather)
+            if (chance < chanceWeather || scheduledCurrentYear.Contains("Weather"))
             {
                 outcomes.Add(SimulateWeather(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            if (chance < chanceWar)
+            if (chance < chanceWar || scheduledCurrentYear.Contains("War"))
             {
                 outcomes.Add(SimulateWar(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            if (chance < chanceHigherImmigration)
-            {
-                outcomes.Add(SimulateHigherImmigration(p));
-            }
-            chance = StaticRandom.Instance.Next(1, 101);
-            if (chance < chanceBetterMedication)
+            if (chance < chanceBetterMedication || scheduledCurrentYear.Contains("Better medication"))
             {
                 outcomes.Add(SimulateBetterMedication(p));
             }
             chance = StaticRandom.Instance.Next(1, 101);
-            if (chance < chanceHigherAverageIncome)
+            if (chance < chanceHigherImmigration || scheduledCurrentYear.Contains("Higher immigration"))
+            {
+                outcomes.Add(SimulateHigherImmigration(p));
+            }           
+            chance = StaticRandom.Instance.Next(1, 101);
+            if (chance < chanceHigherAverageIncome || scheduledCurrentYear.Contains("Higher income"))
             {
                 outcomes.Add(SimulateHigherAverageIncome(p));
             }
