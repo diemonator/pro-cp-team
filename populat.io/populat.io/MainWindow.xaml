@@ -44,15 +44,24 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True"/>
+                    <TextBox x:Name="tbDiseases" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Height="18" Text="10" VerticalAlignment="Top" Width="30"/>
                     <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" />
-                    <CheckBox Margin="0 0 5 0" Grid.Column="1" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" />
-                    <CheckBox Margin="0 0 5 0" Grid.Column="1" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True" />
-                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True"/>
+                    <TextBox x:Name="tbWeather" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="18" Text="20" VerticalAlignment="Top" Width="30"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" />
+                    <TextBox x:Name="tbWar" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="30"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True"/>
+                    <TextBox x:Name="tbMedication" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Height="18" Text="15" VerticalAlignment="Top" Width="30"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True" />
+                    <TextBox x:Name="tbImmigration" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Left" Height="18" Text="10" VerticalAlignment="Top" Width="30"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True"/>
+                    <TextBox x:Name="tbIncome" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Left" Height="18" Text="10" VerticalAlignment="Top" Width="30"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -62,9 +71,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Margin="5" Content="Year"/>
-                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" Width="120" />
+                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" Width="120" PreviewTextInput="Tb_AllowInteger"/>
                     <Label Grid.Column="2" Margin="5" x:Name="lblDelay" Content="Delay" />
-                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" />
+                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" PreviewTextInput="Tb_AllowInteger"/>
 
                 </Grid>
                 <Button Margin="5 5 0 5" Padding="5" Grid.Column="8" Content="Create/Edit City" Click="Button_Click" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -271,8 +272,7 @@ namespace populat.io
             {
                 // Clear previous simulated data
                 city.PopulationThroughYears.RemoveRange(city.LastRecord, city.PopulationThroughYears.Count() - city.LastRecord);
-                EventHelper eh = new EventHelper((bool)cbDisease.IsChecked, (bool)cbWeather.IsChecked, (bool)cbWar.IsChecked,
-                    (bool)cbHigherImmigration.IsChecked, (bool)cbBetterMedication.IsChecked, (bool)cbHigherIncome.IsChecked);
+                EventHelper eh = GenerateEventHelper();
                 lbEventLog.Items.Clear();
                 for (int i = city.PopulationThroughYears.Last().Year + 1; i <= Convert.ToInt32(tbYear.Text); i++)
                 {
@@ -433,6 +433,22 @@ namespace populat.io
             tbDelay.Text = "2";
             DatabaseLoadCharts();
             PlotPopulation();
+        }
+        private void Tb_AllowInteger(object sender, TextCompositionEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private EventHelper GenerateEventHelper()
+        {
+            int disease = (bool)cbDisease.IsChecked ? Convert.ToInt32(tbDiseases.Text) : 0;
+            int weather = (bool)cbWeather.IsChecked ? Convert.ToInt32(tbWeather.Text) : 0;
+            int war = (bool)cbWar.IsChecked ? Convert.ToInt32(tbWar.Text) : 0;
+            int immigration = (bool)cbHigherImmigration.IsChecked ? Convert.ToInt32(tbImmigration.Text) : 0;
+            int medication = (bool)cbBetterMedication.IsChecked ? Convert.ToInt32(tbMedication.Text) : 0;
+            int income = (bool)cbHigherIncome.IsChecked ? Convert.ToInt32(tbIncome.Text) : 0;
+            return new EventHelper(disease, weather, war, immigration, medication, income);
         }
     }
 }
