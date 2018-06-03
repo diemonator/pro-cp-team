@@ -35,6 +35,7 @@ namespace populat.io
         private void MapControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
+            MapControl.Children.Clear(); // so that we cant put many pins on the map at the same time
             Point mPosition = e.GetPosition(this);
             pinLocation = MapControl.ViewportPointToLocation(mPosition);
 

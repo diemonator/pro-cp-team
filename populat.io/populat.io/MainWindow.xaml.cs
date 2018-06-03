@@ -150,6 +150,16 @@ namespace populat.io
             }
         }
 
+        private MapLayer PlacePinAtLocation(Location l)
+        {
+            MapLayer mapLayer = new MapLayer();
+            Image myPushPin = new Image();
+            myPushPin.Source = new BitmapImage(new Uri("Resources/pin.png", UriKind.Relative));
+            myPushPin.Width = 45;
+            myPushPin.Height = 45;
+            mapLayer.AddChild(myPushPin, l, PositionOrigin.Center);
+            return mapLayer;
+        }
         private void AddNewPolygon()
         {
             MapPolygon polygon = new MapPolygon();
@@ -180,7 +190,7 @@ namespace populat.io
             MapControl.Center = location;
             for (int i = 0; i < city.PopulationThroughYears[0].PopulationNr / 10; i++)
             {           // divided by 10 means a pin every 10k people
-                MapControl.Children.Add(new Pushpin() { Location = GenerateRandomPoint(5) });
+                MapControl.Children.Add(PlacePinAtLocation(GenerateRandomPoint(5)));
             }
             AddNewPolygon();
         }
@@ -300,7 +310,6 @@ namespace populat.io
             double y = distance * Math.Sin(angle);
             x /= 90;
             y /= 90;
-            //"51.44164199999999, 5.469722499999989"         
             return new Location(location.Latitude + x, location.Longitude + y);
         }
 
