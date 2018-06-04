@@ -129,33 +129,6 @@ namespace populat.io
                 scheduledEvents = new List<KeyValuePair<int, string>>();
                 lbEventLog.Items.Clear();
                 tbYearEvent.Text = (city.PopulationThroughYears.Last().Year + 1).ToString();
-                //Adding the cities
-                /*using (var context = new dbi359591Entities())
-                {
-                    foreach (var c in city.PopulationThroughYears)
-                    {
-                        var cityTable = new PopulationTable();
-                        cityTable.City = city.Name;
-                        cityTable.Year = c.Year;
-                        cityTable.Age0_17 = c.Age0_17;
-                        cityTable.Age18_34 = c.Age18_34;
-                        cityTable.Age35_54 = c.Age35_54;
-                        cityTable.Age55_Up = c.Age55_up;
-                        cityTable.AverageAge = c.AverageAge;
-                        cityTable.BirthRate = c.BirthRate;
-                        cityTable.DeathRate = c.DeathRate;
-                        cityTable.EmigrationRate = c.EmigrationRate;
-                        cityTable.ImmigrationRate = c.ImmigrationRate;
-                        cityTable.Latitude = c.Latitude;
-                        cityTable.Longitude = c.Longitude;
-                        cityTable.MaleRate = c.MaleRate;
-                        cityTable.FemaleRate = c.FemaleRate;
-                        cityTable.GrowthRate = c.GrowthRate;
-                        cityTable.PopulationNr = c.PopulationNr;
-                        context.PopulationTables.Add(cityTable);
-                        context.SaveChanges();
-                    }
-                }*/
             }
         }
 

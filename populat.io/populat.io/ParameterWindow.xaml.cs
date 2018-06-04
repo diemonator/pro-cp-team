@@ -29,7 +29,7 @@ namespace populat.io
         internal ParameterWindow(City city)
         {
             InitializeComponent();
-        
+
             this.city = city;
             //-l_name.Content = l_name.Content + " " +city.Name;
             if (city != null)
@@ -40,7 +40,7 @@ namespace populat.io
                 }
             }
 
-            if(cityLocation == null)
+            if (cityLocation == null)
             {
                 export_city.IsEnabled = false;
             }
@@ -70,7 +70,7 @@ namespace populat.io
                     }
                     catch (FormatException)
                     {
-                        MessageBox.Show("Incorrect format! Please, enter the values correctly","Warrning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("Incorrect format! Please, enter the values correctly", "Warrning", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
             }
@@ -114,7 +114,7 @@ namespace populat.io
         internal void assignLocation(Location loc)
         {
             this.cityLocation = loc;
-            if(cityLocation != null)
+            if (cityLocation != null)
             {
                 export_city.IsEnabled = true;
             }
@@ -125,24 +125,26 @@ namespace populat.io
             Population p = new Population
             {
                 Year = int.Parse(new_year.Text),
-                BirthRate = double.Parse(new_birthRate.Text)/ 100,
-                DeathRate = double.Parse(new_deathRate.Text)/ 100,
-                PopulationNr = double.Parse(new_populationNr.Text)/100,
-                MaleRate = double.Parse(new_maleRate.Text)/ 100,
-                FemaleRate = double.Parse(new_femaleRate.Text)/ 100,
-                EmigrationRate = double.Parse(new_emigration.Text)/ 100,
-                ImmigrationRate = double.Parse(new_immigration.Text)/ 100,
+                BirthRate = double.Parse(new_birthRate.Text) / 100,
+                DeathRate = double.Parse(new_deathRate.Text) / 100,
+                PopulationNr = double.Parse(new_populationNr.Text) / 100,
+                MaleRate = double.Parse(new_maleRate.Text) / 100,
+                FemaleRate = double.Parse(new_femaleRate.Text) / 100,
+                EmigrationRate = double.Parse(new_emigration.Text) / 100,
+                ImmigrationRate = double.Parse(new_immigration.Text) / 100,
                 AverageAge = double.Parse(new_averageAge.Text),
-                Age0_17 = double.Parse(new_age0_17.Text)/ 100,
-                Age18_34 = double.Parse(new_age18_34.Text)/ 100,
-                Age35_54 = double.Parse(new_age35_54.Text)/ 100,
-                Age55_up = double.Parse(new_age55_up.Text)/ 100
+                Age0_17 = double.Parse(new_age0_17.Text) / 100,
+                Age18_34 = double.Parse(new_age18_34.Text) / 100,
+                Age35_54 = double.Parse(new_age35_54.Text) / 100,
+                Age55_up = double.Parse(new_age55_up.Text) / 100
             };
             p.Latitude = cityLocation.Latitude;
             p.Longitude = cityLocation.Longitude;
             p.GrowthRate = double.Parse(new_growthRate.Text) / 100;
-            List<Population> populations = new List<Population>();
-            populations.Add(p);
+            List<Population> populations = new List<Population>
+            {
+                p
+            };
             City newCity = new City(new_name.Text, populations);
 
             SaveFileDialog dlg = new SaveFileDialog()
@@ -159,6 +161,38 @@ namespace populat.io
             else
             {
                 MessageBox.Show("You have canceled");
+            }
+            //Adding the city
+            if (chB_publicCity.IsChecked == true)
+            {
+                using (var context = new dbi359591Entities())
+                {
+                    foreach (var c in newCity.PopulationThroughYears)
+                    {
+                        var cityTable = new PopulationTable
+                        {
+                            City = city.Name,
+                            Year = c.Year,
+                            Age0_17 = c.Age0_17,
+                            Age18_34 = c.Age18_34,
+                            Age35_54 = c.Age35_54,
+                            Age55_Up = c.Age55_up,
+                            AverageAge = c.AverageAge,
+                            BirthRate = c.BirthRate,
+                            DeathRate = c.DeathRate,
+                            EmigrationRate = c.EmigrationRate,
+                            ImmigrationRate = c.ImmigrationRate,
+                            Latitude = c.Latitude,
+                            Longitude = c.Longitude,
+                            MaleRate = c.MaleRate,
+                            FemaleRate = c.FemaleRate,
+                            GrowthRate = c.GrowthRate,
+                            PopulationNr = c.PopulationNr
+                        };
+                        context.PopulationTables.Add(cityTable);
+                        context.SaveChanges();
+                    }
+                }
             }
             cleanFields();
         }
