@@ -39,6 +39,10 @@ namespace populat.io
                     cb_year.Items.Add(year.Year);
                 }
             }
+            else
+            {
+                ChangeParamateres.IsEnabled = false;
+            }
 
             if (cityLocation == null)
             {
@@ -171,7 +175,7 @@ namespace populat.io
                     {
                         var cityTable = new PopulationTable
                         {
-                            City = city.Name,
+                            City = newCity.Name,
                             Year = c.Year,
                             Age0_17 = c.Age0_17,
                             Age18_34 = c.Age18_34,

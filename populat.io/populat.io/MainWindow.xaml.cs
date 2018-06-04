@@ -404,16 +404,9 @@ namespace populat.io
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (city != null)
-            {
-                child = new ParameterWindow(city);
-                child.ParametersUpdated += CityOnRecive;
-                child.Show();
-            }
-            else
-            {
-                MessageBox.Show("You must load a city first, either from the database or from a csv file", "Warrning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            child = new ParameterWindow(city);
+            child.ParametersUpdated += CityOnRecive;
+            child.Show();
         }
 
         internal void CityOnRecive(City city)
@@ -425,6 +418,10 @@ namespace populat.io
             tbDelay.Text = "2";
             DatabaseLoadCharts();
             PlotPopulation();
+            if (!cb_cities.Items.Contains(city.Name))
+            {
+                cb_cities.Items.Add(city.Name);
+            }
         }
         private void Tb_AllowInteger(object sender, TextCompositionEventArgs e)
         {
