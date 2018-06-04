@@ -65,13 +65,21 @@ namespace populat.io
             using (var context = new dbi359591Entities())
             {
                 // Querry for all city names
-                var cities = (from b in context.PopulationTables
-                              select b.City).Distinct();
-                citiesList = cities.ToList();
-            }
-            foreach (var city in citiesList)
-            {
-                cb_cities.Items.Add(city);
+                if (context.Database.Exists())
+                {
+                    var cities = (from b in context.PopulationTables
+                                  select b.City).Distinct();
+                    citiesList = cities.ToList();
+                    foreach (var city in citiesList)
+                    {
+                        cb_cities.Items.Add(city);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No connection to the database at the current time!", "Warrning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    cb_cities.IsEnabled = false;
+                }
             }
             cbEvent.Items.Insert(0, "--Select event--");
             cbEvent.SelectedIndex = 0;
@@ -468,7 +476,7 @@ namespace populat.io
             {
                 scheduledEvents.Add(new KeyValuePair<int, string>(Convert.ToInt32(tbYearEvent.Text), cbEvent.Text));
                 lbEventLog.Items.Add("Event " + cbEvent.Text + " scheduled for year " + Convert.ToInt32(tbYearEvent.Text));
-            }           
+            }
         }
     }
 }

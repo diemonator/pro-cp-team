@@ -33,9 +33,21 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="0 10 0 10" Padding="5" x:Name="SaveCity" Content="Save City" Click="SaveCity_Click"/>
-                <Button Margin="5 10 0 10" Padding="5" Grid.Column="1" x:Name="LoadCity" Content="Load City" Click="LoadCity_Click"/>
-                <ComboBox VerticalContentAlignment="Center" Margin="0 5 0 5" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities" SelectionChanged="Cb_cities_SelectionChanged"/>
+                <GroupBox Grid.RowSpan="2" Header="Load City" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="0 0 5 0" Padding="5" x:Name="SaveCity" Content="Save City" Click="SaveCity_Click"/>
+                        <Button Padding="5" Grid.Column="1" x:Name="LoadCity" Content="Load City" Click="LoadCity_Click"/>
+                        <ComboBox VerticalContentAlignment="Center" Margin="0 6 0 6" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities" SelectionChanged="Cb_cities_SelectionChanged"/>
+                    </Grid>
+                </GroupBox>
                 <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5" Grid.Column="2" Grid.RowSpan="2"
                        x:Name="lblCityName" Content="Please load a city" FontSize="18"/>
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Grid.Column="3">
@@ -168,9 +180,15 @@
                 </lvc:CartesianChart>
             </Grid>
             <ListBox Margin="0 15 0 0" Grid.Row="2" Grid.Column="2" x:Name="lbEventLog" />
-            <GroupBox Grid.Column="1" Header="Schedule events" HorizontalAlignment="Left" Height="64" Margin="9.8,10,0,0" VerticalAlignment="Top" Width="330">
-                <Grid>
-                    <ComboBox x:Name="cbEvent" HorizontalAlignment="Left" Margin="0,11,0,0" VerticalAlignment="Top" Width="114" Height="22">
+            <GroupBox Grid.Column="1" Header="Schedule events" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="cbEvent" VerticalAlignment="Center">
                         <ComboBoxItem>Disease</ComboBoxItem>
                         <ComboBoxItem>Weather</ComboBoxItem>
                         <ComboBoxItem>War</ComboBoxItem>
@@ -178,12 +196,9 @@
                         <ComboBoxItem>Higher immigration</ComboBoxItem>
                         <ComboBoxItem>Higher income</ComboBoxItem>
                     </ComboBox>
-                    <TextBox x:Name="tbYearEvent" HorizontalAlignment="Left" Height="22" Margin="155,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"
-                             PreviewTextInput="Tb_AllowInteger"/>
-                    <Label Content="Year
-                           " HorizontalAlignment="Left" Margin="119,9,0,0" VerticalAlignment="Top" Width="36" Height="27"/>
-                    <Button x:Name="btnAddEvent" Content="Add event" HorizontalAlignment="Left" Margin="232,11,0,0" VerticalAlignment="Top" Width="76" Height="22"
-                            Click="BtnAddEvent_Click"/>
+                    <Label Grid.Column="1" Content="Year"/>
+                    <TextBox Grid.Column="2" VerticalContentAlignment="Center" Margin="0 0 5 0" x:Name="tbYearEvent" TextWrapping="Wrap" PreviewTextInput="Tb_AllowInteger"/>
+                    <Button Grid.Column="3" Padding="5" x:Name="btnAddEvent" Content="Add event" Click="BtnAddEvent_Click"/>
                 </Grid>
             </GroupBox>
         </Grid>
