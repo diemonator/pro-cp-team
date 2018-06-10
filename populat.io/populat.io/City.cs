@@ -17,18 +17,18 @@ namespace populat.io
         {
             Name = name;
             PopulationThroughYears = data;
-            LastRecord = PopulationThroughYears.Count();
-
-
+            LastRecord = PopulationThroughYears.Count();       
+            Population baseYear = PopulationThroughYears.Last();
+            Population preBaseYear;
             if (LastRecord > 1)
             {
-                int index1 = LastRecord - 1;
-                int index2 = LastRecord - 2;
-                Population preBaseYear = PopulationThroughYears[index2];
-                Population baseYear = PopulationThroughYears[index1];
-
-                PopulationRate = (baseYear.PopulationNr * 100 / preBaseYear.PopulationNr) / 100;
+                preBaseYear = PopulationThroughYears[LastRecord - 2];              
             }
+            else
+            {
+                preBaseYear = baseYear;
+            }
+            PopulationRate = (baseYear.PopulationNr * 100 / preBaseYear.PopulationNr) / 100;
         }
 
         public List<string> Simulate(int year, EventHelper eh)
@@ -38,7 +38,15 @@ namespace populat.io
             double DeathDifference;
             int index = PopulationThroughYears.Count() - 2;
             Population lastYear = PopulationThroughYears.Last();
-            Population lastlastYear = PopulationThroughYears[index];
+            Population lastlastYear;
+            if (PopulationThroughYears.Count < 2)
+            {
+                lastlastYear = lastYear;
+            }
+            else
+            {
+                lastlastYear = PopulationThroughYears[index];
+            }
 
             BirthDifference = Difference(lastYear.BirthRate, lastlastYear.BirthRate);
             DeathDifference = Difference(lastYear.DeathRate, lastlastYear.DeathRate);
