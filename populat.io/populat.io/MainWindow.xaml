@@ -43,10 +43,12 @@
                         </Grid.ColumnDefinitions>
                         <Button Margin="0 0 5 0" Padding="5" x:Name="SaveCity" Content="Save City" Click="SaveCity_Click"/>
                         <Button Padding="5" Grid.Column="1" x:Name="LoadCity" Content="Load City" Click="LoadCity_Click"/>
-                        <ComboBox VerticalContentAlignment="Center" Margin="0 6 0 6" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities" SelectionChanged="Cb_cities_SelectionChanged"/>
+                        <ComboBox VerticalContentAlignment="Center" Margin="0 6 0 6" Grid.Row="1" Grid.ColumnSpan="2" x:Name="cb_cities"
+                                  SelectionChanged="Cb_cities_SelectionChanged"/>
                     </Grid>
                 </GroupBox>
-                <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5" Grid.Column="1" Grid.RowSpan="2"
+                <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5"
+                       Grid.Column="1" Grid.RowSpan="2"
                        x:Name="lblCityName" Content="Please load a city" FontSize="18"/>
                 <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="5" Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -61,24 +63,30 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True" VerticalAlignment="Center"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="0" x:Name="cbDisease" Content="Diseases" IsChecked="True" VerticalAlignment="Center"
+                              ToolTip="Enable disease events"/>
                     <TextBox x:Name="tbDiseases" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Text="10" VerticalAlignment="Center" Width="30"
-                             PreviewTextInput="Tb_AllowInteger"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" VerticalAlignment="Center"/>
+                             PreviewTextInput="Tb_AllowInteger" ToolTip="Chance of event happening each year (in %)"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="0" Grid.Row="1" x:Name="cbWeather" Content="Weather" IsChecked="True" VerticalAlignment="Center"
+                              ToolTip="Enable weather events"/>
                     <TextBox x:Name="tbWeather" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Text="20" VerticalAlignment="Center" Width="30"
-                             PreviewTextInput="Tb_AllowInteger"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" VerticalAlignment="Center"/>
+                             PreviewTextInput="Tb_AllowInteger" ToolTip="Chance of event happening each year (in %)"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="0" x:Name="cbWar" Content="War" IsChecked="True" VerticalAlignment="Center"
+                              ToolTip="Enable war events"/>
                     <TextBox x:Name="tbWar" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="5" VerticalAlignment="Top"
-                             Width="30" PreviewTextInput="Tb_AllowInteger"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True" VerticalAlignment="Center"/>
+                             Width="30" PreviewTextInput="Tb_AllowInteger" ToolTip="Chance of event happening each year (in %)"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="2" Grid.Row="1" x:Name="cbBetterMedication" Content="Better Medication" IsChecked="True"
+                              VerticalAlignment="Center" ToolTip="Enable better medication events"/>
                     <TextBox x:Name="tbMedication" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Text="15" VerticalAlignment="Center" Width="30"
-                             PreviewTextInput="Tb_AllowInteger"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True" VerticalAlignment="Center"/>
+                             PreviewTextInput="Tb_AllowInteger" ToolTip="Chance of event happening each year (in %)"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="0" x:Name="cbHigherImmigration" Content="Higher Immigration" IsChecked="True"
+                              VerticalAlignment="Center" ToolTip="Enable higher immigration events"/>
                     <TextBox x:Name="tbImmigration" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Center" Text="10" VerticalAlignment="Center" Width="30"
-                             PreviewTextInput="Tb_AllowInteger"/>
-                    <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True" VerticalAlignment="Center"/>
+                             PreviewTextInput="Tb_AllowInteger" ToolTip="Chance of event happening each year (in %)"/>
+                    <CheckBox Margin="0 0 5 0" Grid.Column="4" Grid.Row="1" x:Name="cbHigherIncome" Content="Higher income" IsChecked="True"
+                              VerticalAlignment="Center" ToolTip="Enable higher income events"/>
                     <TextBox x:Name="tbIncome" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" Text="10" VerticalAlignment="Center" Width="30"
-                             PreviewTextInput="Tb_AllowInteger"/>
+                             PreviewTextInput="Tb_AllowInteger" ToolTip="Chance of event happening each year (in %)"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -88,9 +96,11 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Margin="5" Content="Year"/>
-                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" PreviewTextInput="Tb_AllowInteger"/>
+                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" Margin="5" x:Name="tbYear" PreviewTextInput="Tb_AllowInteger"
+                             ToolTip="Simulation end year"/>
                     <Label Grid.Column="2" Margin="5" x:Name="lblDelay" Content="Delay" />
-                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" PreviewTextInput="Tb_AllowInteger"/>
+                    <TextBox Grid.Column="3" VerticalContentAlignment="Center" Margin="5" x:Name="tbDelay" PreviewTextInput="Tb_AllowInteger"
+                             ToolTip="Delay per year (seconds)"/>
 
                 </Grid>
                 <Button Margin="5 10 5 10" Padding="5" Grid.Column="8" Content="Create/Edit City" Click="Button_Click" />
@@ -98,7 +108,8 @@
             </Grid>
             <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l"
                    Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" />
-            <Label Grid.Column="2" x:Name ="lblCurrentYear" Content="Current year of the simulation: " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Label Grid.Column="2" x:Name ="lblCurrentYear" Content="Current year of the simulation: "
+                VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Grid Grid.Row="1" Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -168,7 +179,8 @@
                         <lvc:LineSeries Title="Population Count in 1000's" Values="5" DataLabels="True"/>
                     </lvc:CartesianChart.Series>
                 </lvc:CartesianChart>
-                <lvc:CartesianChart Grid.Column="1" x:Name="ChartComparison" Series="{Binding SeriesCollection}" LegendLocation="Right" MaxWidth="600" Margin="0,0,0,10">
+                <lvc:CartesianChart Grid.Column="1" x:Name="ChartComparison" Series="{Binding SeriesCollection}"
+                                    LegendLocation="Right" MaxWidth="600" Margin="0,0,0,10">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Years" Labels="{Binding LabelsColumns}"></lvc:Axis>
                     </lvc:CartesianChart.AxisX>
@@ -195,7 +207,9 @@
                         <ComboBoxItem>Higher income</ComboBoxItem>
                     </ComboBox>
                     <Label Grid.Column="1" Content="Year"/>
-                    <TextBox Grid.Column="2" VerticalContentAlignment="Center" Margin="0 0 5 0" x:Name="tbYearEvent" TextWrapping="Wrap" PreviewTextInput="Tb_AllowInteger"/>
+                    <TextBox Grid.Column="2" VerticalContentAlignment="Center" Margin="0 0 5 0" x:Name="tbYearEvent" TextWrapping="Wrap"
+                             PreviewTextInput="Tb_AllowInteger"
+                             ToolTip="Year for selected event"/>
                     <Button Grid.Column="3" Padding="5" x:Name="btnAddEvent" Content="Add event" Click="BtnAddEvent_Click"/>
                 </Grid>
             </GroupBox>
