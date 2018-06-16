@@ -109,7 +109,7 @@
             <m:Map Grid.Row="1" Grid.ColumnSpan="2" Name="MapControl" CredentialsProvider="Aqit3w_zwutPILH80JrofpH3hS-FjgOM46UX4NfPRT6Gnck13th58o9peIY0uG6l"
                    Center="51.44164199999999, 5.469722499999989" ZoomLevel="12" />
             <Label Grid.Column="2" x:Name ="lblCurrentYear" Content="Current year of the simulation: "
-                VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                VerticalAlignment="Center" HorizontalAlignment="Center" Margin="79.4,10,79.2,48.8"/>
             <Grid Grid.Row="1" Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -213,6 +213,7 @@
                     <Button Grid.Column="3" Padding="5" x:Name="btnAddEvent" Content="Add event" Click="BtnAddEvent_Click"/>
                 </Grid>
             </GroupBox>
+            <Button x:Name="btnExport" Content="Export" Grid.Column="2" HorizontalAlignment="Left" Margin="118.4,41,0,0" VerticalAlignment="Top" Width="88" Height="34" Click="btnExport_Click"/>
         </Grid>
     </Border>
 </Window>

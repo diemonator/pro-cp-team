@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
       <Private>True</Private>
@@ -102,6 +105,7 @@
     <Compile Include="ParameterWindow.xaml.cs">
       <DependentUpon>ParameterWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PDFHelper.cs" />
     <Compile Include="PopulationTable.cs">
       <DependentUpon>CityPopulationModel.tt</DependentUpon>
     </Compile>

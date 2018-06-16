@@ -448,6 +448,25 @@ namespace populat.io
                 lbEventLog.Items.Add("Event " + cbEvent.Text + " scheduled for year " + Convert.ToInt32(tbYearEvent.Text));
             }
         }
+
+        private void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            if (city != null) {
+                SaveFileDialog dialog = new SaveFileDialog()
+                {
+                    Filter = "PDF Document(*.pdf)|*.pdf",
+                    FileName = city.Name
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    PDFHelper.CreatePdf(this, dialog.FileName);
+                }
+            }
+            else {
+                MessageBox.Show("Please load a city first");
+            }
+        }
     }
 }
 

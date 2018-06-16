@@ -202,3 +202,5 @@ C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\populat.io_Content.g.cs
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\Map.baml
 C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\obj\Debug\ParameterWindow.baml
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\itextsharp.dll
+C:\Users\Iv4o\Desktop\populat.io\populat.io\populat.io\bin\Debug\itextsharp.xml
