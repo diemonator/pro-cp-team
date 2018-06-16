@@ -460,7 +460,7 @@ namespace populat.io
 
                 if (dialog.ShowDialog() == true)
                 {
-                    PDFHelper.CreatePdf(this, dialog.FileName);
+                    PDFHelper.CreatePdf(this, dialog.FileName, city);
                 }
             }
             else {
